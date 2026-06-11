@@ -1,0 +1,92 @@
+/* ============================================================
+   ALLOME — Design Token System
+   "Finding the jewel in all of me."
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500&family=Jost:wght@300;400&display=swap');
+
+:root {
+  /* ─── Brand Colors ─── */
+  --allome-crimson:    #7A1C2E;
+  --allome-cream:      #F8F3EE;
+  --allome-gold:       #C8A96E;
+  --allome-charcoal:   #1C1A1A;
+  --allome-blush:      #EDD5C5;
+  --allome-mist:       #E8E3DC;
+  --allome-white:      #FDFCFA;
+
+  /* Extended palette */
+  --allome-crimson-deep:  #5A1220;
+  --allome-crimson-soft:  #9B2E45;
+  --allome-gold-light:    #D9BF8A;
+  --allome-gold-dark:     #A8863E;
+  --allome-charcoal-soft: #2E2B2B;
+  --allome-ink:           #0D0B0B;
+
+  /* ─── Typography ─── */
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-body:    'DM Sans', system-ui, sans-serif;
+  --font-label:   'Jost', sans-serif;
+
+  /* Type Scale — fluid */
+  --text-hero:    clamp(52px, 8vw, 120px);
+  --text-title:   clamp(36px, 5vw, 72px);
+  --text-section: clamp(28px, 3.5vw, 52px);
+  --text-large:   clamp(22px, 2.5vw, 36px);
+  --text-body:    clamp(15px, 1.6vw, 18px);
+  --text-small:   14px;
+  --text-caption: 12px;
+  --text-label:   11px;
+
+  /* Letter spacing */
+  --ls-display: -0.03em;
+  --ls-label:   0.14em;
+  --ls-wide:    0.08em;
+
+  /* Line heights */
+  --lh-display: 0.92;
+  --lh-tight:   1.15;
+  --lh-base:    1.6;
+  --lh-loose:   1.8;
+
+  /* ─── Motion ─── */
+  --ease-cinematic: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-reveal:    cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --ease-smooth:    cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-spring:    cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  --duration-fast:      0.25s;
+  --duration-base:      0.5s;
+  --duration-slow:      1.0s;
+  --duration-cinematic: 1.8s;
+
+  /* ─── Spacing ─── */
+  --space-2xs:  4px;
+  --space-xs:   8px;
+  --space-sm:   16px;
+  --space-md:   24px;
+  --space-lg:   40px;
+  --space-xl:   64px;
+  --space-2xl:  96px;
+  --space-3xl:  140px;
+
+  /* ─── Layout ─── */
+  --max-width:     1440px;
+  --content-width: 1200px;
+  --nav-height:    72px;
+  --section-pad:   clamp(80px, 10vw, 160px);
+
+  /* ─── Surfaces ─── */
+  --shadow-gold:    0 4px 24px rgba(200, 169, 110, 0.15);
+  --shadow-soft:    0 8px 40px rgba(28, 26, 26, 0.08);
+  --shadow-deep:    0 20px 60px rgba(28, 26, 26, 0.18);
+  --border-mist:    1px solid var(--allome-mist);
+  --border-gold:    1px solid rgba(200, 169, 110, 0.4);
+
+  /* ─── Z-index layers ─── */
+  --z-base:    1;
+  --z-above:   10;
+  --z-nav:     100;
+  --z-overlay: 200;
+  --z-cursor:  9999;
+}

@@ -1,0 +1,656 @@
+/* ============================================================
+   ALLOME — Mobile & iOS/Android Optimisation CSS
+   Fixes: touch targets, safe areas, font rendering, tap highlights,
+   scroll behaviour, text sizing, overscroll, performance
+   ============================================================ */
+
+/* ─── iOS Safe Area Insets ─── */
+:root {
+  --safe-top:    env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-left:   env(safe-area-inset-left, 0px);
+  --safe-right:  env(safe-area-inset-right, 0px);
+}
+
+/* ─── Global Mobile Resets ─── */
+*, *::before, *::after {
+  /* iOS rubber-band fix */
+  -webkit-tap-highlight-color: transparent;
+  /* Prevent text inflate on orientation change */
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+html {
+  /* Smooth momentum scrolling on iOS */
+  -webkit-overflow-scrolling: touch;
+  overflow-x: hidden;
+}
+
+body {
+  overflow-x: hidden;
+  /* Prevent pull-to-refresh ruining hero on mobile */
+  overscroll-behavior-y: none;
+}
+
+/* ─── Touch targets (44×44px minimum per WCAG / Apple HIG) ─── */
+.nav__link,
+.nav__overlay-link,
+.nav__action-btn,
+.nav__hamburger,
+.btn-outline,
+.collection-card,
+.testimonials__dot,
+.whatsapp-float__btn,
+.newsletter__submit,
+.footer__nav-link,
+.footer__social-link,
+.footer__wa-btn {
+  min-height: 44px;
+  min-width: 44px;
+}
+
+/* Filter pills on mobile — increase hit area */
+.filter-pill {
+  min-height: 44px !important;
+  padding: 10px 16px !important;
+}
+
+/* Product "Make it Yours" CTAs */
+.product-card__cta {
+  min-height: 44px !important;
+  padding: 10px 4px !important;
+}
+
+/* Mini footer links — add padding so they're tappable */
+.mini-footer__link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 8px;
+}
+
+/* Journal card read link */
+.journal-card__read {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 0;
+}
+
+/* Secondary text CTAs on homepage (View All, View Journal, etc.) */
+.section-cta-link,
+.collections__cta,
+.editorial__cta,
+.instagram__cta {
+  display: inline-flex !important;
+  align-items: center;
+  min-height: 44px;
+  padding: 10px 0;
+}
+
+/* Story CTA buttons */
+.cta-btn {
+  min-height: 48px !important;
+}
+
+/* Nav hamburger */
+.nav__hamburger {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+}
+
+/* Nav logo link — ensure full height */
+.nav__logo {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+}
+
+/* ─── Mobile: hide nav logo text below 400px to prevent overlap with action icons ─── */
+@media (max-width: 400px) {
+  .nav__logo-text {
+    display: none;
+  }
+}
+
+/* ─── Nav: safe area at top for notched phones ─── */
+.nav {
+  padding-top: var(--safe-top);
+}
+
+/* Adjust nav height variable to include safe area */
+@supports (padding-top: env(safe-area-inset-top)) {
+  .nav {
+    height: calc(var(--nav-height) + var(--safe-top));
+  }
+  
+  .inner-page,
+  .hero {
+    padding-top: calc(var(--nav-height) + var(--safe-top));
+  }
+}
+
+/* ─── Footer: safe area at bottom ─── */
+.footer,
+.mini-footer,
+.whatsapp-float {
+  padding-bottom: calc(var(--safe-bottom, 0px) + var(--space-lg));
+}
+
+.whatsapp-float {
+  bottom: calc(24px + var(--safe-bottom, 0px));
+  right: calc(24px + var(--safe-right, 0px));
+}
+
+/* ─── Image rendering on retina ─── */
+img {
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  image-rendering: auto;
+}
+
+/* ─── Nav: Real logo image fit ─── */
+.nav__logo-mark {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  /* White background logo → invert on dark nav */
+  filter: none;
+  border-radius: 0;
+  display: block;
+}
+
+/* When nav is transparent (over hero), the logo has white bg */
+.nav:not(.nav--scrolled) .nav__logo-mark {
+  filter: none;
+}
+
+.footer__logo-mark {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+}
+
+/* ─── Typography — Mobile fluid scale ─── */
+@media (max-width: 390px) {
+  :root {
+    --text-hero:    clamp(42px, 12vw, 64px);
+    --text-title:   clamp(36px, 10vw, 52px);
+    --text-section: clamp(28px, 8vw, 40px);
+    --text-body:    15px;
+  }
+}
+
+/* ─── Hero — Mobile ─── */
+@media (max-width: 767px) {
+  .hero {
+    min-height: 100svh; /* svh = small viewport height (excludes browser chrome) */
+  }
+
+  .hero__content {
+    padding: 0 24px clamp(80px, 18vh, 140px);
+  }
+
+  .hero__title {
+    font-size: clamp(38px, 11vw, 64px);
+    line-height: 0.95;
+  }
+
+  .hero__line-1,
+  .hero__line-2 {
+    display: block;
+  }
+
+  .hero__rule {
+    width: 160px;
+    margin-bottom: 24px;
+  }
+
+  #hero-cta {
+    font-size: 10px;
+    padding: 12px 24px;
+  }
+
+  .hero__scroll {
+    bottom: 32px;
+  }
+
+  /* Disable parallax completely on mobile — too heavy */
+  .hero__image {
+    transform: none !important;
+    will-change: auto !important;
+  }
+
+  .hero__content {
+    transform: none !important;
+  }
+}
+
+/* ─── Collections — Mobile snap scroll ─── */
+@media (max-width: 1023px) {
+  .collections__scroll-wrapper {
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding-bottom: 0;
+  }
+
+  .collections__scroll-wrapper::-webkit-scrollbar {
+    display: none;
+  }
+
+  .collections__track {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 16px;
+    padding: 0 24px 32px;
+  }
+
+  .collection-card {
+    flex: 0 0 72vw;
+    max-width: 320px;
+    scroll-snap-align: start;
+  }
+}
+
+/* ─── Bespoke split — Mobile stack ─── */
+@media (max-width: 1023px) {
+  .bespoke__inner {
+    grid-template-columns: 1fr;
+  }
+
+  .bespoke__left {
+    padding: clamp(48px, 8vw, 80px) clamp(24px, 5vw, 60px);
+  }
+
+  .bespoke__right {
+    padding: 0 clamp(24px, 5vw, 60px) clamp(48px, 8vw, 80px);
+  }
+}
+
+/* ─── Editorial grid — Mobile ─── */
+@media (max-width: 767px) {
+  .editorial__grid {
+    grid-template-columns: 1fr 1fr;
+    grid-auto-rows: 200px;
+  }
+
+  .editorial__item--tall {
+    grid-row: span 1;
+  }
+
+  .editorial__item--wide {
+    grid-column: span 2;
+  }
+}
+
+/* ─── Identity section — Mobile ─── */
+@media (max-width: 767px) {
+  .identity {
+    padding: clamp(64px, 12vw, 100px) 24px;
+  }
+
+  .identity__svg {
+    width: 80px;
+    height: 80px;
+  }
+
+  .identity__wordmark {
+    font-size: clamp(36px, 12vw, 60px);
+    letter-spacing: 0.25em;
+  }
+
+  .identity__tagline {
+    font-size: 14px;
+    padding: 0 16px;
+  }
+
+  .venn__circles {
+    width: 220px;
+    height: 130px;
+  }
+
+  .venn__circle {
+    width: 86px;
+    height: 86px;
+  }
+}
+
+/* ─── Newsletter — Mobile ─── */
+@media (max-width: 600px) {
+  .newsletter__form {
+    flex-direction: column;
+    gap: 12px;
+    max-width: 100%;
+  }
+
+  .newsletter__input {
+    width: 100%;
+    text-align: center;
+  }
+
+  .newsletter__submit {
+    width: 44px;
+    height: 44px;
+    align-self: center;
+  }
+}
+
+/* ─── Footer — Mobile ─── */
+@media (max-width: 767px) {
+  .footer__grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-xl);
+    padding: var(--space-2xl) 24px;
+  }
+
+  .footer__bottom {
+    flex-direction: column;
+    gap: 8px;
+    text-align: center;
+    padding: var(--space-lg) 24px;
+  }
+}
+
+/* ─── Testimonials — Mobile ─── */
+@media (max-width: 767px) {
+  .testimonial__quote {
+    font-size: clamp(20px, 5.5vw, 32px);
+    padding: 0 4px;
+  }
+}
+
+/* ─── Philosophy strip — Mobile ─── */
+@media (max-width: 767px) {
+  .philosophy__headline {
+    font-size: clamp(36px, 10vw, 64px);
+    padding: 0 16px;
+    text-align: center;
+  }
+}
+
+/* ─── WhatsApp float — iOS bottom bar spacing ─── */
+.whatsapp-float {
+  position: fixed;
+  bottom: max(24px, calc(16px + var(--safe-bottom)));
+  right: max(24px, calc(16px + var(--safe-right)));
+  z-index: var(--z-whatsapp);
+}
+
+/* ─── Prevent 300ms tap delay on iOS ─── */
+a, button, [role="button"], label {
+  touch-action: manipulation;
+}
+
+/* ─── Smooth scroll: disabled on prefers-reduced-motion ─── */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* ─── GPU-accelerate only critical elements ─── */
+.nav,
+.page-loader,
+.cursor,
+.whatsapp-float__btn {
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+/* Don't GPU-accelerate everything (memory hog on mobile) */
+.collection-card,
+.editorial__item,
+.step-card {
+  will-change: auto;
+}
+
+/* ─── Fix iOS momentum scroll inside containers ─── */
+.collections__scroll-wrapper,
+.nav__overlay-links {
+  -webkit-overflow-scrolling: touch;
+  overflow-scrolling: touch;
+}
+
+/* ─── Input zoom prevention (iOS zooms on focus if font < 16px) ─── */
+input[type="email"],
+input[type="text"],
+textarea,
+select {
+  font-size: 16px !important; /* Must be 16px+ on iOS to prevent zoom */
+}
+
+/* Keep visual size smaller via transform if desired */
+.newsletter__input {
+  font-size: 16px;
+}
+
+/* ─── Nav overlay — iOS full height ─── */
+.nav__overlay {
+  height: 100dvh; /* dvh = dynamic viewport height, respects browser chrome */
+}
+
+/* ─── Buttons: no double-tap zoom on iOS ─── */
+button, a {
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+/* ─── Android status bar colour (already set in meta but reinforce) ─── */
+@media (display-mode: standalone) {
+  .nav {
+    padding-top: max(var(--safe-top), 20px);
+  }
+}
+
+/* ─── iOS 15: Identity wordmark — prevent wrapping on small screens ─── */
+.identity__wordmark {
+  white-space: nowrap;
+}
+
+@media (max-width: 430px) {
+  .identity__wordmark {
+    font-size: clamp(28px, 9vw, 48px);
+    letter-spacing: 0.15em;
+  }
+}
+
+@media (max-width: 360px) {
+  .identity__wordmark {
+    font-size: clamp(22px, 8vw, 36px);
+    letter-spacing: 0.08em;
+  }
+}
+
+/* ─── iOS 15: Venn circles — fix on narrow screens ─── */
+@media (max-width: 430px) {
+  .venn__circles {
+    width: 200px;
+    height: 120px;
+  }
+
+  .venn__circle {
+    width: 82px;
+    height: 82px;
+  }
+
+  .venn__circle:nth-child(1) { left: 0; }
+  .venn__circle:nth-child(2) { left: 52px; }
+  .venn__circle:nth-child(3) { left: 104px; }
+
+  .venn__label {
+    font-size: 8px;
+  }
+}
+
+/* ─── iOS: Kill horizontal overflow from marquee + absolute elements ─── */
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* Marquee must be clipped at its container, not body level */
+.philosophy__marquee {
+  overflow: hidden;
+  max-width: 100vw;
+}
+
+/* Prevent any section from creating horizontal scroll on iOS ─── */
+.philosophy,
+.collections,
+.sig-collections,
+.bespoke,
+.editorial,
+.identity,
+.testimonials,
+.instagram,
+.newsletter,
+.newsletter-allome,
+.why-allome,
+.personalise,
+.lifestyle,
+.stories,
+.gifts,
+.footer {
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
+/* ─── New ALLOME UI sections — Mobile ─── */
+
+/* Signature Collections */
+@media (max-width: 1023px) {
+  .sig-collections__track {
+    padding: 0 20px 24px;
+  }
+
+  .sig-card {
+    width: 76vw;
+    max-width: 300px;
+  }
+}
+
+/* Why ALLOME */
+@media (max-width: 767px) {
+  .why-allome {
+    padding: clamp(56px, 10vw, 80px) 24px;
+  }
+
+  .why-allome__pillars {
+    gap: var(--space-2xl);
+  }
+}
+
+/* Personalisation Showcase */
+@media (max-width: 1023px) {
+  .personalise__inner {
+    grid-template-columns: 1fr;
+    padding: 0 24px;
+    gap: var(--space-xl);
+  }
+
+  .personalise__grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Lifestyle Gallery */
+@media (max-width: 767px) {
+  .lifestyle__mosaic {
+    padding: 0 16px;
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: clamp(120px, 25vw, 180px);
+  }
+
+  .lifestyle__header {
+    padding: 0 16px;
+  }
+}
+
+/* Customer Stories */
+@media (max-width: 767px) {
+  .stories__inner {
+    padding: 0 20px;
+  }
+
+  .stories__layout {
+    grid-template-columns: 1fr;
+  }
+
+  .stories__photo {
+    aspect-ratio: 3/2;
+    max-height: 280px;
+    object-position: top;
+  }
+
+  .stories__quote {
+    font-size: clamp(18px, 5vw, 26px);
+  }
+}
+
+/* Little Gifts */
+@media (max-width: 767px) {
+  .gifts__inner {
+    padding: 0 16px;
+  }
+
+  .gifts__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .gift-card--feature {
+    grid-column: span 2;
+  }
+}
+
+/* Newsletter ALLOME */
+@media (max-width: 600px) {
+  .newsletter-allome__form {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .newsletter-allome__input {
+    text-align: center;
+    border-bottom: 1px solid rgba(248, 243, 238, 0.2);
+  }
+
+  .newsletter-allome__btn {
+    width: 100%;
+    padding: 14px 20px;
+  }
+}
+
+/* Nav — new 3-col layout on mobile */
+@media (max-width: 767px) {
+  .nav__inner {
+    grid-template-columns: 44px 1fr 44px;
+    padding: 0 16px;
+  }
+
+  .nav__logo-text {
+    font-size: 18px;
+    letter-spacing: 0.25em;
+  }
+}
+
+/* Footer 4-col on mobile */
+@media (max-width: 767px) {
+  .footer__grid--4col {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-xl);
+    padding: var(--space-2xl) 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer__grid--4col {
+    grid-template-columns: 1fr;
+  }
+}

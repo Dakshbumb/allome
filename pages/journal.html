@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="description" content="The Allome Journal — stories on craft, culture, and the quiet meaning of things worn close to the heart." />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="theme-color" content="#7A1C2E" />
+  <title>Journal — Allome Fine Jewellery</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=Jost:wght@300;400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/tokens.css" />
+  <link rel="stylesheet" href="../css/base.css" />
+  <link rel="stylesheet" href="../css/nav.css" />
+  <link rel="stylesheet" href="../css/animations.css" />
+  <link rel="stylesheet" href="../css/inner-pages.css" />
+  <link rel="stylesheet" href="../css/mobile.css" />
+  <link rel="stylesheet" href="/pages/journal.css" />
+</head>
+<body>
+  <div class="grain-overlay" aria-hidden="true"></div>
+  <div class="cursor" id="cursor" aria-hidden="true">
+    <div class="cursor__dot"></div>
+    <div class="cursor__ring"></div>
+    <div class="cursor__label">READ</div>
+  </div>
+
+  <nav class="nav nav--scrolled" id="nav" role="navigation" aria-label="Main navigation">
+    <div class="nav__inner">
+      <!-- Left Nav Links -->
+      <ul class="nav__links nav__links--left" role="list">
+        <li><a href="/" class="nav__link">Home</a></li>
+        <li><a href="/pages/collections" class="nav__link">Collections</a></li>
+        <li><a href="/pages/bespoke" class="nav__link">Personalise</a></li>
+        <li><a href="/pages/story" class="nav__link">Our Story</a></li>
+      </ul>
+
+      <!-- Logo (Centre) -->
+      <a href="/" class="nav__logo" aria-label="Allome Home">
+        <span class="nav__logo-text">ALLOME</span>
+      </a>
+
+      <!-- Right Actions -->
+      <div class="nav__actions">
+        <button class="nav__action-btn" aria-label="Search" id="search-btn">
+          <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </button>
+        <button class="nav__action-btn" aria-label="Cart" id="cart-btn">
+          <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+        </button>
+        <button class="nav__hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">
+          <span class="nav__hamburger-bar"></span>
+          <span class="nav__hamburger-bar"></span>
+          <span class="nav__hamburger-bar"></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+  <div class="nav__overlay" id="nav-overlay" role="dialog" aria-modal="true">
+    <div class="nav__overlay-bg" aria-hidden="true"></div>
+    <ul class="nav__overlay-links" role="list">
+      <li><a href="/" class="nav__overlay-link">Home</a></li>
+      <li><a href="/pages/collections" class="nav__overlay-link">Collections</a></li>
+      <li><a href="/pages/bespoke" class="nav__overlay-link">Personalise</a></li>
+      <li><a href="/pages/story" class="nav__overlay-link">Our Story</a></li>
+      <li><a href="/pages/journal" class="nav__overlay-link">Journal</a></li>
+    </ul>
+    <p class="nav__overlay-footer">Finding the jewel in all of me · Made in India 🇮🇳</p>
+  </div>
+
+  <div class="inner-page">
+
+    <!-- Page Header -->
+    <header class="page-header page-header--minimal">
+      <div class="page-header__content" style="text-align:center">
+        <span class="page-header__eyebrow eyebrow">THE JOURNAL</span>
+        <h1 class="page-header__title" style="color:var(--allome-charcoal)">Stories from<br/><em>the atelier.</em></h1>
+        <p class="page-header__subtitle" style="color:rgba(28,26,26,0.5);margin:0 auto;max-width:480px">On craft, culture, and the quiet meaning of things worn close to the heart.</p>
+      </div>
+    </header>
+
+    <!-- Featured Article -->
+    <section class="section section--cream" aria-label="Featured article">
+      <div class="container">
+        <article class="featured-article reveal-up" aria-label="Featured: Why every piece of Allome jewellery starts with a story">
+          <div class="featured-article__media">
+            <img src="../assets/images/journal-1.jpg" alt="Editorial jewellery photograph — flat lay with gold ring and dried flowers" class="featured-article__img" loading="eager" fetchpriority="high" />
+          </div>
+          <div class="featured-article__overlay" aria-hidden="true"></div>
+          <div class="featured-article__content">
+            <span class="featured-article__cat">CRAFT</span>
+            <h2 class="featured-article__title">Why every piece of Allome jewellery starts with a story.</h2>
+            <p class="featured-article__excerpt">Before the gold is shaped, before the gemstone is set — there is a conversation. A moment where a piece of jewellery becomes yours.</p>
+            <div class="featured-article__meta">
+              <span class="featured-article__date">June 2025</span>
+              <span class="featured-article__sep" aria-hidden="true">·</span>
+              <span class="featured-article__time">5 min read</span>
+            </div>
+            <a href="#" class="featured-article__cta">Read the Story →</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Articles Grid -->
+    <section class="section section--white journal-grid-section" aria-label="All journal articles">
+      <div class="container">
+        <div class="journal-grid">
+
+          <!-- Article 1 -->
+          <article class="journal-card reveal-up" style="--delay:0s">
+            <a href="#" class="journal-card__link" aria-label="Read: The art of giving gold">
+              <div class="journal-card__img-wrap">
+                <img src="../assets/images/journal-2.jpg" alt="Woman receiving jewellery gift" class="journal-card__img" loading="lazy" />
+              </div>
+              <div class="journal-card__body">
+                <span class="journal-card__cat">GIFTING</span>
+                <h3 class="journal-card__title">The art of giving gold. A guide to gifting jewellery with intention.</h3>
+                <p class="journal-card__excerpt">Jewellery is never just an object. Learn how to choose a piece that speaks without words.</p>
+                <div class="journal-card__footer">
+                  <span class="journal-card__meta">May 2025 · 4 min read</span>
+                  <span class="journal-card__read">Read →</span>
+                </div>
+              </div>
+            </a>
+          </article>
+
+          <!-- Article 2 -->
+          <article class="journal-card reveal-up" style="--delay:0.08s">
+            <a href="#" class="journal-card__link" aria-label="Read: These women chose to wear their stories">
+              <div class="journal-card__img-wrap">
+                <img src="../assets/images/journal-3.jpg" alt="Friends laughing wearing gold jewellery" class="journal-card__img" loading="lazy" />
+              </div>
+              <div class="journal-card__body">
+                <span class="journal-card__cat">COMMUNITY</span>
+                <h3 class="journal-card__title">These women chose to wear their stories. Literally.</h3>
+                <p class="journal-card__excerpt">Four Allome customers share what their bespoke pieces mean to them — in their own words.</p>
+                <div class="journal-card__footer">
+                  <span class="journal-card__meta">April 2025 · 6 min read</span>
+                  <span class="journal-card__read">Read →</span>
+                </div>
+              </div>
+            </a>
+          </article>
+
+          <!-- Quote card -->
+          <article class="journal-card journal-card--quote reveal-up" style="--delay:0.16s" aria-label="Allome quote">
+            <div class="journal-card__quote-inner">
+              <blockquote class="journal-card__quote-text">"Jewellery is the most intimate form of self-expression. It is always personal."</blockquote>
+              <p class="journal-card__quote-attr">— Allome</p>
+            </div>
+          </article>
+
+          <!-- Article 4 -->
+          <article class="journal-card reveal-up" style="--delay:0.04s">
+            <a href="#" class="journal-card__link" aria-label="Read: Inside the atelier">
+              <div class="journal-card__img-wrap">
+                <img src="../assets/images/bespoke-process.jpg" alt="Artisan hands crafting jewellery" class="journal-card__img" loading="lazy" />
+              </div>
+              <div class="journal-card__body">
+                <span class="journal-card__cat">CRAFT</span>
+                <h3 class="journal-card__title">Inside the atelier: how a bespoke Allome piece is made, step by step.</h3>
+                <p class="journal-card__excerpt">From the first sketch to the final polish — the making of a bespoke piece takes 12–14 days and a lot of love.</p>
+                <div class="journal-card__footer">
+                  <span class="journal-card__meta">March 2025 · 8 min read</span>
+                  <span class="journal-card__read">Read →</span>
+                </div>
+              </div>
+            </a>
+          </article>
+
+          <!-- Article 5 -->
+          <article class="journal-card reveal-up" style="--delay:0.12s">
+            <a href="#" class="journal-card__link" aria-label="Read: The case for wearing fine jewellery every day">
+              <div class="journal-card__img-wrap">
+                <img src="../assets/images/editorial-1.jpg" alt="Lifestyle jewellery photography" class="journal-card__img" loading="lazy" />
+              </div>
+              <div class="journal-card__body">
+                <span class="journal-card__cat">STYLE</span>
+                <h3 class="journal-card__title">The case for wearing fine jewellery every day — not just for occasions.</h3>
+                <p class="journal-card__excerpt">Your best pieces shouldn't live in a box. Here's how to build a jewellery wardrobe that works every day.</p>
+                <div class="journal-card__footer">
+                  <span class="journal-card__meta">Feb 2025 · 5 min read</span>
+                  <span class="journal-card__read">Read →</span>
+                </div>
+              </div>
+            </a>
+          </article>
+
+          <!-- Article 6 -->
+          <article class="journal-card reveal-up" style="--delay:0.2s">
+            <a href="#" class="journal-card__link" aria-label="Read: Indian gold">
+              <div class="journal-card__img-wrap">
+                <img src="../assets/images/editorial-2.jpg" alt="Gold jewellery editorial photograph" class="journal-card__img" loading="lazy" />
+              </div>
+              <div class="journal-card__body">
+                <span class="journal-card__cat">CULTURE</span>
+                <h3 class="journal-card__title">Indian gold: the tradition, the meaning, the modern interpretation.</h3>
+                <p class="journal-card__excerpt">Gold has been central to Indian culture for millennia. Allome explores its past — and what it means for the future.</p>
+                <div class="journal-card__footer">
+                  <span class="journal-card__meta">Jan 2025 · 7 min read</span>
+                  <span class="journal-card__read">Read →</span>
+                </div>
+              </div>
+            </a>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="journal-newsletter" aria-label="Newsletter signup">
+      <div class="journal-newsletter__inner">
+        <h2 class="journal-newsletter__title reveal-up">The jewel finds you.</h2>
+        <p class="journal-newsletter__sub reveal-up">New stories, new designs, and moments made for you — in your inbox.</p>
+        <form class="journal-newsletter__form reveal-up" id="newsletter-form" aria-label="Subscribe to the Allome newsletter">
+          <label for="jnl-email" class="sr-only">Your email address</label>
+          <input type="email" id="jnl-email" class="journal-newsletter__input" placeholder="Your email address" required autocomplete="email" />
+          <button type="submit" class="journal-newsletter__btn" aria-label="Subscribe">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </button>
+        </form>
+        <p class="journal-newsletter__note" id="nl-success" hidden>Thank you for subscribing. Stories on their way to you. ✦</p>
+      </div>
+    </section>
+
+    <footer class="mini-footer" role="contentinfo">
+      <a href="/" class="mini-footer__logo">ALLOME</a>
+      <nav class="mini-footer__links" aria-label="Footer links">
+        <a href="/pages/collections" class="mini-footer__link">Collections</a>
+        <a href="/pages/bespoke" class="mini-footer__link">Personalise</a>
+        <a href="/pages/story" class="mini-footer__link">Our Story</a>
+        <a href="/pages/journal" class="mini-footer__link">Journal</a>
+      </nav>
+      <p class="mini-footer__copy">© 2025 Allome · Made in India 🇮🇳</p>
+    </footer>
+  </div>
+
+  <div class="whatsapp-float is-visible" id="wa-float">
+    <span class="whatsapp-float__tooltip">Chat with us</span>
+    <a href="https://wa.me/919999999999?text=Hi%20Allome%2C%20I%27d%20like%20to%20know%20more" class="whatsapp-float__btn" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    </a>
+  </div>
+
+  <script src="../js/cursor.js" defer></script>
+  <script>
+  (function(){
+    'use strict';
+    const prefRM = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const h=document.getElementById('hamburger'),o=document.getElementById('nav-overlay');
+    if(h&&o){h.addEventListener('click',()=>{const open=o.classList.toggle('is-open');h.classList.toggle('is-open',open);h.setAttribute('aria-expanded',open);document.body.style.overflow=open?'hidden':'';});o.querySelectorAll('.nav__overlay-link').forEach(l=>l.addEventListener('click',()=>{o.classList.remove('is-open');h.classList.remove('is-open');h.setAttribute('aria-expanded','false');document.body.style.overflow='';}));}
+    const ro=new IntersectionObserver(e=>{e.forEach(en=>{if(en.isIntersecting){const d=parseFloat(en.target.style.getPropertyValue('--delay'))||0;if(prefRM)en.target.classList.add('is-visible');else setTimeout(()=>en.target.classList.add('is-visible'),d*1000);ro.unobserve(en.target);}});},{threshold:0.07,rootMargin:'0px 0px -40px 0px'});
+    document.querySelectorAll('.reveal-up').forEach(el=>ro.observe(el));
+    const form=document.getElementById('newsletter-form');
+    const success=document.getElementById('nl-success');
+    form&&form.addEventListener('submit',e=>{e.preventDefault();if(success){form.style.display='none';success.removeAttribute('hidden');}});
+  })();
+  </script>
+</body>
+</html>

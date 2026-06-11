@@ -1,0 +1,228 @@
+/* ============================================================
+   ALLOME — Custom Cursor & Micro-Interactions
+   ============================================================ */
+
+/* ─── Custom Cursor ─── */
+
+.cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: var(--z-cursor);
+  pointer-events: none;
+  mix-blend-mode: difference;
+}
+
+.cursor__dot {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--allome-cream);
+  transform: translate(-50%, -50%);
+  transition: width 0.3s var(--ease-spring),
+              height 0.3s var(--ease-spring),
+              background 0.2s;
+  will-change: transform;
+}
+
+.cursor__ring {
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid var(--allome-cream);
+  transform: translate(-50%, -50%);
+  transition: width 0.4s var(--ease-spring),
+              height 0.4s var(--ease-spring),
+              border-color 0.2s,
+              opacity 0.2s;
+  will-change: transform;
+  opacity: 0.6;
+}
+
+/* Hover state — image hover */
+.cursor.is-hovering-image .cursor__dot {
+  width: 48px;
+  height: 48px;
+  background: rgba(248, 243, 238, 0.92);
+}
+
+.cursor.is-hovering-image .cursor__ring {
+  width: 64px;
+  height: 64px;
+  opacity: 0;
+}
+
+/* Hover state — link hover */
+.cursor.is-hovering-link .cursor__dot {
+  width: 14px;
+  height: 14px;
+}
+
+.cursor.is-hovering-link .cursor__ring {
+  width: 44px;
+  height: 44px;
+  border-color: rgba(200, 169, 110, 0.8);
+  opacity: 1;
+}
+
+/* View label on image hover */
+.cursor__label {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--font-label);
+  font-size: 8px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--allome-charcoal);
+  opacity: 0;
+  transition: opacity 0.2s;
+  white-space: nowrap;
+  mix-blend-mode: normal;
+}
+
+.cursor.is-hovering-image .cursor__label {
+  opacity: 1;
+}
+
+/* ─── Floating WhatsApp Button ─── */
+
+.whatsapp-float {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  z-index: calc(var(--z-overlay) - 1);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  opacity: 0;
+  transform: translateY(20px);
+  pointer-events: none;
+  transition: opacity 0.4s var(--ease-smooth),
+              transform 0.4s var(--ease-cinematic);
+}
+
+.whatsapp-float.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.whatsapp-float__tooltip {
+  font-family: var(--font-label);
+  font-size: 10px;
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--allome-cream);
+  background: var(--allome-charcoal);
+  padding: 8px 14px;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateX(6px);
+  transition: opacity var(--duration-fast), transform var(--duration-base) var(--ease-cinematic);
+  pointer-events: none;
+}
+
+.whatsapp-float:hover .whatsapp-float__tooltip {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.whatsapp-float__btn {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--allome-crimson);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: none;
+  box-shadow: 0 4px 20px rgba(122, 28, 46, 0.35);
+  transition: transform var(--duration-fast) var(--ease-spring),
+              box-shadow var(--duration-fast);
+  animation: waBtnPulse 3s ease-in-out infinite;
+}
+
+.whatsapp-float__btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 28px rgba(122, 28, 46, 0.5);
+  animation: none;
+}
+
+@keyframes waBtnPulse {
+  0%, 100% { box-shadow: 0 4px 20px rgba(122, 28, 46, 0.35); }
+  50% { box-shadow: 0 4px 28px rgba(122, 28, 46, 0.55), 0 0 0 8px rgba(122, 28, 46, 0.08); }
+}
+
+.whatsapp-float__btn svg {
+  width: 22px;
+  height: 22px;
+  fill: var(--allome-cream);
+}
+
+/* ─── Page Loader ─── */
+
+.page-loader {
+  position: fixed;
+  inset: 0;
+  background: var(--allome-charcoal);
+  z-index: 10000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+  transition: opacity 0.8s var(--ease-cinematic), visibility 0.8s;
+}
+
+.page-loader.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.page-loader__logo {
+  font-family: var(--font-display);
+  font-size: 32px;
+  font-weight: 300;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--allome-cream);
+  animation: loaderPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes loaderPulse {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+.page-loader__bar-track {
+  width: 140px;
+  height: 1px;
+  background: rgba(248, 243, 238, 0.12);
+  position: relative;
+  overflow: hidden;
+}
+
+.page-loader__bar {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, transparent, var(--allome-gold), transparent);
+  animation: loaderBar 1.2s var(--ease-cinematic) forwards;
+}
+
+@keyframes loaderBar {
+  from { left: -100%; }
+  to { left: 100%; }
+}
+
+/* ─── Reduced motion: hide cursor ─── */
+@media (hover: none), (prefers-reduced-motion: reduce) {
+  .cursor { display: none; }
+}

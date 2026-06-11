@@ -1,0 +1,309 @@
+/* ============================================================
+   ALLOME — Inner Pages Shared CSS
+   Used by: story.html, collections.html, journal.html
+   ============================================================ */
+
+/* ─── Page Layout Wrapper ─── */
+.inner-page {
+  padding-top: var(--nav-height);
+  background: var(--allome-cream);
+  min-height: 100vh;
+}
+
+/* ─── Cinematic Page Header ─── */
+.page-header {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.page-header--tall {
+  height: 70vh;
+  min-height: 480px;
+}
+
+.page-header--medium {
+  height: 50vh;
+  min-height: 380px;
+}
+
+.page-header--minimal {
+  padding: clamp(48px, 8vw, 80px) 0 clamp(32px, 5vw, 56px);
+  background: var(--allome-cream);
+  text-align: center;
+}
+
+.page-header__media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.page-header__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+  filter: saturate(0.85);
+  transform: scale(1.04);
+  transition: transform 8s ease;
+}
+
+.page-header:hover .page-header__img {
+  transform: scale(1.06);
+}
+
+.page-header__vignette {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(to top, rgba(28,26,26,0.8) 0%, rgba(28,26,26,0.2) 50%, transparent 80%);
+}
+
+.page-header__content {
+  position: relative;
+  z-index: 2;
+  padding: 0 clamp(24px, 6vw, 100px) clamp(48px, 7vw, 96px);
+  max-width: var(--max-width);
+  width: 100%;
+}
+
+.page-header__eyebrow {
+  display: block;
+  margin-bottom: var(--space-md);
+  opacity: 0;
+  animation: headerReveal 0.8s 0.3s var(--ease-cinematic) forwards;
+}
+
+.page-header__title {
+  font-family: var(--font-display);
+  font-size: var(--text-title);
+  font-weight: 300;
+  letter-spacing: var(--ls-display);
+  line-height: var(--lh-tight);
+  color: var(--allome-cream);
+  opacity: 0;
+  animation: headerReveal 1s 0.5s var(--ease-cinematic) forwards;
+}
+
+.page-header--minimal .page-header__title {
+  color: var(--allome-charcoal);
+  animation: headerReveal 0.8s 0.2s var(--ease-cinematic) forwards;
+}
+
+.page-header__subtitle {
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  color: rgba(248,243,238,0.65);
+  margin-top: var(--space-md);
+  max-width: 480px;
+  line-height: var(--lh-loose);
+  opacity: 0;
+  animation: headerReveal 0.8s 0.7s var(--ease-cinematic) forwards;
+}
+
+.page-header--minimal .page-header__subtitle {
+  color: rgba(28,26,26,0.55);
+}
+
+@keyframes headerReveal {
+  from { opacity: 0; transform: translateY(24px); filter: blur(4px); }
+  to   { opacity: 1; transform: translateY(0);    filter: blur(0px); }
+}
+
+/* ─── Shared Section Spacing ─── */
+.section {
+  padding: var(--section-pad) 0;
+}
+
+.section--cream  { background: var(--allome-cream); }
+.section--white  { background: var(--allome-white); }
+.section--blush  { background: var(--allome-blush); }
+.section--dark   { background: var(--allome-charcoal); }
+.section--crimson { background: var(--allome-crimson); }
+
+/* ─── Shared Content Grid ─── */
+.content-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  align-items: center;
+}
+
+.content-grid--reversed .content-grid__visual { order: -1; }
+
+.content-grid__text {
+  padding: clamp(48px, 7vw, 100px) clamp(40px, 5vw, 80px);
+}
+
+.content-grid__visual {
+  position: relative;
+  overflow: hidden;
+}
+
+.content-grid__img {
+  width: 100%;
+  height: 100%;
+  min-height: 520px;
+  object-fit: cover;
+  filter: saturate(0.88);
+  transition: transform 1s var(--ease-cinematic), filter 0.5s;
+}
+
+.content-grid__visual:hover .content-grid__img {
+  transform: scale(1.03);
+  filter: saturate(1.0);
+}
+
+/* ─── Shared Typography Helpers ─── */
+.text-eyebrow {
+  font-family: var(--font-label);
+  font-size: var(--text-label);
+  font-weight: 300;
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--allome-gold);
+  display: block;
+  margin-bottom: var(--space-md);
+}
+
+.text-headline {
+  font-family: var(--font-display);
+  font-size: var(--text-section);
+  font-weight: 300;
+  letter-spacing: var(--ls-display);
+  line-height: var(--lh-tight);
+  color: var(--allome-charcoal);
+  margin-bottom: var(--space-lg);
+}
+
+.text-headline--cream { color: var(--allome-cream); }
+.text-headline--gold  { color: var(--allome-gold); }
+
+.text-body-lg {
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  line-height: var(--lh-loose);
+  color: rgba(28,26,26,0.7);
+  margin-bottom: var(--space-lg);
+}
+
+.text-body-lg + .text-body-lg { margin-top: calc(-1 * var(--space-sm)); }
+
+/* ─── Gold Rule ─── */
+.section-rule {
+  width: 48px;
+  height: 1px;
+  background: var(--allome-gold);
+  margin-bottom: var(--space-xl);
+}
+
+/* ─── Inner Page Footer CTA Band ─── */
+.inner-footer-cta {
+  background: var(--allome-charcoal);
+  padding: var(--space-3xl) clamp(24px, 4vw, 80px);
+  text-align: center;
+}
+
+.inner-footer-cta__title {
+  font-family: var(--font-display);
+  font-size: var(--text-section);
+  font-weight: 300;
+  letter-spacing: var(--ls-display);
+  color: var(--allome-cream);
+  margin-bottom: var(--space-md);
+}
+
+.inner-footer-cta__subtitle {
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  color: rgba(248,243,238,0.5);
+  margin-bottom: var(--space-xl);
+}
+
+/* ─── Mini Footer for inner pages ─── */
+.mini-footer {
+  background: var(--allome-charcoal);
+  border-top: 1px solid rgba(200,169,110,0.15);
+  padding: var(--space-lg) clamp(24px, 4vw, 80px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-lg);
+  flex-wrap: wrap;
+}
+
+.mini-footer__logo {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--allome-cream);
+  text-decoration: none;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.mini-footer__links {
+  display: flex;
+  gap: var(--space-lg);
+  flex-wrap: wrap;
+}
+
+.mini-footer__link {
+  font-family: var(--font-label);
+  font-size: var(--text-label);
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: rgba(248,243,238,0.4);
+  transition: color var(--duration-fast);
+}
+
+.mini-footer__link:hover { color: var(--allome-gold); }
+
+.mini-footer__copy {
+  font-family: var(--font-body);
+  font-size: 11px;
+  color: rgba(248,243,238,0.2);
+}
+
+/* ─── Responsive ─── */
+@media (max-width: 1023px) {
+  .content-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .content-grid__img {
+    min-height: 360px;
+  }
+
+  .content-grid--reversed .content-grid__visual { order: 0; }
+
+  .page-header--tall {
+    height: 55vh;
+  }
+}
+
+@media (max-width: 767px) {
+  .page-header--tall {
+    height: 50vh;
+    min-height: 360px;
+  }
+
+  .page-header__content {
+    padding: 0 24px 40px;
+  }
+
+  .content-grid__text {
+    padding: var(--space-2xl) clamp(24px, 5vw, 48px);
+  }
+
+  .mini-footer {
+    flex-direction: column;
+    text-align: center;
+  }
+}

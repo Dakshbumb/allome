@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="description" content="Browse the Allome jewellery collection — rings, necklaces, bracelets, bespoke pieces and gifts. Every design is a starting point. Make it yours." />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="theme-color" content="#7A1C2E" />
+  <title>Collections — Allome Fine Jewellery</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=Jost:wght@300;400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/tokens.css" />
+  <link rel="stylesheet" href="../css/base.css" />
+  <link rel="stylesheet" href="../css/nav.css" />
+  <link rel="stylesheet" href="../css/animations.css" />
+  <link rel="stylesheet" href="../css/inner-pages.css" />
+  <link rel="stylesheet" href="../css/mobile.css" />
+  <link rel="stylesheet" href="/pages/collections.css" />
+</head>
+<body>
+  <div class="grain-overlay" aria-hidden="true"></div>
+  <div class="cursor" id="cursor" aria-hidden="true">
+    <div class="cursor__dot"></div>
+    <div class="cursor__ring"></div>
+    <div class="cursor__label">VIEW</div>
+  </div>
+
+  <nav class="nav nav--scrolled" id="nav" role="navigation" aria-label="Main navigation">
+    <div class="nav__inner">
+      <!-- Left Nav Links -->
+      <ul class="nav__links nav__links--left" role="list">
+        <li><a href="/" class="nav__link">Home</a></li>
+        <li><a href="/pages/collections" class="nav__link" aria-current="page">Collections</a></li>
+        <li><a href="/pages/bespoke" class="nav__link">Personalise</a></li>
+        <li><a href="/pages/story" class="nav__link">Our Story</a></li>
+      </ul>
+
+      <!-- Logo (Centre) -->
+      <a href="/" class="nav__logo" aria-label="Allome Home">
+        <span class="nav__logo-text">ALLOME</span>
+      </a>
+
+      <!-- Right Actions -->
+      <div class="nav__actions">
+        <button class="nav__action-btn" aria-label="Search" id="search-btn">
+          <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </button>
+        <button class="nav__action-btn" aria-label="Cart" id="cart-btn">
+          <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+        </button>
+        <button class="nav__hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">
+          <span class="nav__hamburger-bar"></span>
+          <span class="nav__hamburger-bar"></span>
+          <span class="nav__hamburger-bar"></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+  <div class="nav__overlay" id="nav-overlay" role="dialog" aria-modal="true">
+    <div class="nav__overlay-bg" aria-hidden="true"></div>
+    <ul class="nav__overlay-links" role="list">
+      <li><a href="/" class="nav__overlay-link">Home</a></li>
+      <li><a href="/pages/collections" class="nav__overlay-link">Collections</a></li>
+      <li><a href="/pages/bespoke" class="nav__overlay-link">Personalise</a></li>
+      <li><a href="/pages/story" class="nav__overlay-link">Our Story</a></li>
+      <li><a href="/pages/journal" class="nav__overlay-link">Journal</a></li>
+    </ul>
+    <p class="nav__overlay-footer">Finding the jewel in all of me · Made in India 🇮🇳</p>
+  </div>
+
+  <div class="inner-page">
+
+    <!-- Page Header -->
+    <header class="page-header page-header--minimal">
+      <div class="page-header__content" style="text-align:center">
+        <span class="page-header__eyebrow eyebrow">THE COLLECTION</span>
+        <h1 class="page-header__title" style="color:var(--allome-charcoal)">Every piece,<br/><em>a world of its own.</em></h1>
+        <p class="page-header__subtitle" style="color:rgba(28,26,26,0.55);margin:0 auto">Browse our full range. Every design is a starting point — the story begins when you make it yours.</p>
+      </div>
+    </header>
+
+    <!-- Filter Bar -->
+    <div class="filter-bar" id="filter-bar" role="toolbar" aria-label="Filter jewellery by category">
+      <div class="filter-bar__inner">
+        <button class="filter-pill is-active" data-filter="all" aria-pressed="true">All</button>
+        <button class="filter-pill" data-filter="rings" aria-pressed="false">Rings</button>
+        <button class="filter-pill" data-filter="necklaces" aria-pressed="false">Necklaces</button>
+        <button class="filter-pill" data-filter="bracelets" aria-pressed="false">Bracelets</button>
+        <button class="filter-pill" data-filter="bespoke" aria-pressed="false">Bespoke</button>
+        <button class="filter-pill" data-filter="gifts" aria-pressed="false">Gifts</button>
+      </div>
+      <p class="filter-count" id="filter-count" aria-live="polite">Showing 12 pieces</p>
+    </div>
+
+    <!-- Products Grid -->
+    <main class="section section--cream coll-main" aria-label="Jewellery collection">
+      <div class="container">
+        <div class="products-grid" id="products-grid">
+
+          <!-- 1 -->
+          <article class="product-card reveal-up" data-category="rings" style="--delay:0s">
+            <div class="product-card__img-wrap">
+              <img src="../assets/images/collection-rings.jpg" alt="The Everyday Ring" class="product-card__img" loading="lazy" />
+              <span class="product-card__tag">Rings</span>
+              <div class="product-card__hover-cta" aria-hidden="true">Make it Yours →</div>
+            </div>
+            <div class="product-card__body">
+              <h2 class="product-card__name">The Everyday Ring</h2>
+              <p class="product-card__tagline">Slim gold band, worn daily and loved always.</p>
+              <div class="product-card__footer">
+                <span class="product-card__price">From ₹3,200</span>
+                <a href="bespoke.html" class="product-card__cta">Make it Yours →</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- 2 -->
+          <article class="product-card reveal-up" data-category="necklaces" style="--delay:0.05s">
+            <div class="product-card__img-wrap">
+              <img src="../assets/images/collection-necklaces.jpg" alt="The Name Necklace" class="product-card__img" loading="lazy" />
+              <span class="product-card__tag">Necklaces</span>
+              <div class="product-card__hover-cta" aria-hidden="true">Make it Yours →</div>
+            </div>
+            <div class="product-card__body">
+              <h2 class="product-card__name">The Name Necklace</h2>
+              <p class="product-card__tagline">Wear your name close to your heart.</p>
+              <div class="product-card__footer">
+                <span class="product-card__price">From ₹3,600</span>
+                <a href="bespoke.html" class="product-card__cta">Make it Yours →</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- 3 -->
+          <article class="product-card reveal-up" data-category="bracelets" style="--delay:0.1s">
+            <div class="product-card__img-wrap">
+              <img src="../assets/images/collection-bracelets.jpg" alt="The Thin Bangle" class="product-card__img" loading="lazy" />
+              <span class="product-card__tag">Bracelets</span>
+              <div class="product-card__hover-cta" aria-hidden="true">Make it Yours →</div>
+            </div>
+            <div class="product-card__body">
+              <h2 class="product-card__name">The Thin Bangle</h2>
+              <p class="product-card__tagline">The one you never take off.</p>
+              <div class="product-card__footer">
+                <span class="product-card__price">From ₹3,800</span>
+                <a href="bespoke.html" class="product-card__cta">Make it Yours →</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- 4 -->
+          <article class="product-card reveal-up" data-category="rings" style="--delay:0.05s">
+            <div class="product-card__img-wrap">
+              <img src="../assets/images/bespoke-base-1.jpg" alt="The Initial Ring" class="product-card__img" loading="lazy" />
+              <span class="product-card__tag">Rings</span>
+              <div class="product-card__hover-cta" aria-hidden="true">Make it Yours →</div>
+            </div>
+            <div class="product-card__body">
+              <h2 class="product-card__name">The Initial Ring</h2>
+              <p class="product-card__tagline">Your letter, in solid gold.</p>
+              <div class="product-card__footer">
+                <span class="product-card__price">From ₹4,400</span>
+                <a href="bespoke.html" class="product-card__cta">Make it Yours →</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- 5 -->
+          <article class="product-card reveal-up" data-category="necklaces" style="--delay:0.1s">
+            <div class="product-card__img-wrap">
+              <img src="../assets/images/bespoke-base-2.jpg" alt="The Layered Chain" class="product-card__img" loading="lazy" />
+              <span class="product-card__tag">Necklaces</span>
+              <div class="product-card__hover-cta" aria-hidden="true">Make it Yours →</div>
+            </div>
+            <div class="product-card__body">
+              <h2 class="product-card__name">The Layered Chain</h2>
+              <p class="product-card__tagline">Delicate layers that move with you.</p>
+              <div class="product-card__footer">
+                <span class="product-card__price">From ₹4,200</span>
+                <a href="bespoke.html" class="product-card__cta">Make it Yours →</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- 6 -->
+          <article class="product-card reveal-up" data-category="gifts" style="--delay:0.15s">
+            <div class="product-card__img-wrap">
+              <img src="../assets/images/collection-gifts.jpg" alt="The Gift Set" class="product-card__img" loading="lazy" />
+              <span class="product-card__tag">Gifts</span>
+              <div class="product-card__hover-cta" aria-hidden="true">Make it Yours →</div>
+            </div>
+            <div class="product-card__body">
+              <h2 class="product-card__name">The Gift Set</h2>
+              <p class="product-card__tagline">Two pieces, one story. Perfect for gifting.</p>
+              <div class="product-card__footer">
+                <span class="product-card__price">From ₹4,800</span>
+                <a href="bespoke.html" class="product-card__cta">Make it Yours →</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- 7 -->
+          <article class="product-card reveal-up" data-category="bespoke" style="--delay:0s">
+            <div class="product-card__img-wrap">
+              <img src="../assets/images/collection-bespoke.jpg" alt="The Signature Ring" class="product-card__img" loading="lazy" />
+              <span class="product-card__tag">Bespoke</span>
+              <div class="product-card__hover-cta" aria-hidden="true">Make it Yours →</div>
+            </div>
+            <div class="product-card__body">
+              <h2 class="product-card__name">The Signature Ring</h2>
+              <p class="product-card__tagline">Fully bespoke — your words, your shape.</p>
+              <div class="product-card__footer">
+                <span class="product-card__price">From ₹6,000</span>
+                <a href="bespoke.html" class="product-card__cta">Make it Yours →</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- 8 -->
+          <article class="product-card reveal-up" data-category="necklaces" style="--delay:0.05s">
+            <div class="product-card__img-wrap">
+              <img src="../assets/images/editorial-2.jpg" alt="The Birthstone Pendant" class="product-card__img" loading="lazy" />
+              <span class="product-card__tag">Necklaces</span>
+              <div class="product-card__hover-cta" aria-hidden="true">Make it Yours →</div>
+            </div>
+            <div class="product-card__body">
+              <h2 class="product-card__name">The Birthstone Pendant</h2>
+              <p class="product-card__tagline">Your stone. Your month. Your story.</p>
+              <div class="product-card__footer">
+                <span class="product-card__price">From ₹5,800</span>
+                <a href="bespoke.html" class="product-card__cta">Make it Yours →</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- 9 -->
+          <article class="product-card reveal-up" data-category="bracelets" style="--delay:0.1s">
+            <div class="product-card__img-wrap">
+              <img src="../assets/images/bespoke-base-3.jpg" alt="The Charm Bracelet" class="product-card__img" loading="lazy" />
+              <span class="product-card__tag">Bracelets</span>
+              <div class="product-card__hover-cta" aria-hidden="true">Make it Yours →</div>
+            </div>
+            <div class="product-card__body">
+              <h2 class="product-card__name">The Charm Bracelet</h2>
+              <p class="product-card__tagline">Add charms as your story grows.</p>
+              <div class="product-card__footer">
+                <span class="product-card__price">From ₹5,200</span>
+                <a href="bespoke.html" class="product-card__cta">Make it Yours →</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- 10 -->
+          <article class="product-card reveal-up" data-category="rings" style="--delay:0.1s">
+            <div class="product-card__img-wrap">
+              <img src="../assets/images/editorial-1.jpg" alt="The Stacking Set" class="product-card__img" loading="lazy" />
+              <span class="product-card__tag">Rings</span>
+              <div class="product-card__hover-cta" aria-hidden="true">Make it Yours →</div>
+            </div>
+            <div class="product-card__body">
+              <h2 class="product-card__name">The Stacking Set</h2>
+              <p class="product-card__tagline">Three rings, infinite combinations.</p>
+              <div class="product-card__footer">
+                <span class="product-card__price">From ₹6,800</span>
+                <a href="bespoke.html" class="product-card__cta">Make it Yours →</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- 11 -->
+          <article class="product-card reveal-up" data-category="bespoke" style="--delay:0.05s">
+            <div class="product-card__img-wrap">
+              <img src="../assets/images/bespoke-process.jpg" alt="The Memory Pendant" class="product-card__img" loading="lazy" />
+              <span class="product-card__tag">Bespoke</span>
+              <div class="product-card__hover-cta" aria-hidden="true">Make it Yours →</div>
+            </div>
+            <div class="product-card__body">
+              <h2 class="product-card__name">The Memory Pendant</h2>
+              <p class="product-card__tagline">A date, a name, a moment — in gold.</p>
+              <div class="product-card__footer">
+                <span class="product-card__price">From ₹7,500</span>
+                <a href="bespoke.html" class="product-card__cta">Make it Yours →</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- 12 -->
+          <article class="product-card reveal-up" data-category="gifts" style="--delay:0.1s">
+            <div class="product-card__img-wrap">
+              <img src="../assets/images/collection-bespoke.jpg" alt="The Birthday Piece" class="product-card__img" loading="lazy" />
+              <span class="product-card__tag">Gifts</span>
+              <div class="product-card__hover-cta" aria-hidden="true">Make it Yours →</div>
+            </div>
+            <div class="product-card__body">
+              <h2 class="product-card__name">The Birthday Piece</h2>
+              <p class="product-card__tagline">Because some moments deserve gold.</p>
+              <div class="product-card__footer">
+                <span class="product-card__price">From ₹3,400</span>
+                <a href="bespoke.html" class="product-card__cta">Make it Yours →</a>
+              </div>
+            </div>
+          </article>
+
+        </div><!-- /grid -->
+      </div>
+    </main>
+
+    <!-- Bespoke CTA Band -->
+    <section class="coll-bespoke-cta" aria-label="Custom bespoke jewellery">
+      <div class="coll-bespoke-cta__inner">
+        <h2 class="coll-bespoke-cta__title">Don't see exactly<br/>what you want?</h2>
+        <p class="coll-bespoke-cta__sub">Every Allome piece can be customised. Start a conversation with our artisans.</p>
+        <a href="bespoke.html" class="cta-btn cta-btn--outline-gold">Design Yours →</a>
+      </div>
+    </section>
+
+    <footer class="mini-footer" role="contentinfo">
+      <a href="/" class="mini-footer__logo">ALLOME</a>
+      <nav class="mini-footer__links" aria-label="Footer links">
+        <a href="/pages/collections" class="mini-footer__link">Collections</a>
+        <a href="/pages/bespoke" class="mini-footer__link">Personalise</a>
+        <a href="/pages/story" class="mini-footer__link">Our Story</a>
+        <a href="/pages/journal" class="mini-footer__link">Journal</a>
+      </nav>
+      <p class="mini-footer__copy">© 2025 Allome · Made in India 🇮🇳</p>
+    </footer>
+  </div>
+
+  <div class="whatsapp-float is-visible" id="wa-float">
+    <span class="whatsapp-float__tooltip">Chat with us</span>
+    <a href="https://wa.me/919999999999?text=Hi%20Allome%2C%20I%27m%20interested%20in%20a%20piece" class="whatsapp-float__btn" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    </a>
+  </div>
+
+  <script src="../js/cursor.js" defer></script>
+  <script>
+  (function(){
+    'use strict';
+    const prefRM = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    // Nav
+    const h=document.getElementById('hamburger'),o=document.getElementById('nav-overlay');
+    if(h&&o){h.addEventListener('click',()=>{const open=o.classList.toggle('is-open');h.classList.toggle('is-open',open);h.setAttribute('aria-expanded',open);document.body.style.overflow=open?'hidden':'';});o.querySelectorAll('.nav__overlay-link').forEach(l=>l.addEventListener('click',()=>{o.classList.remove('is-open');h.classList.remove('is-open');h.setAttribute('aria-expanded','false');document.body.style.overflow='';}));}
+
+    // Reveal
+    const ro=new IntersectionObserver(e=>{e.forEach(en=>{if(en.isIntersecting){const d=parseFloat(en.target.style.getPropertyValue('--delay'))||0;if(prefRM)en.target.classList.add('is-visible');else setTimeout(()=>en.target.classList.add('is-visible'),d*1000);ro.unobserve(en.target);}});},{threshold:0.06,rootMargin:'0px 0px -40px 0px'});
+    document.querySelectorAll('.reveal-up').forEach(el=>ro.observe(el));
+
+    // Filter
+    const pills = document.querySelectorAll('.filter-pill');
+    const cards = document.querySelectorAll('.product-card');
+    const counter = document.getElementById('filter-count');
+    let current = 'all';
+
+    pills.forEach(pill=>{
+      pill.addEventListener('click',()=>{
+        pills.forEach(p=>{p.classList.remove('is-active');p.setAttribute('aria-pressed','false');});
+        pill.classList.add('is-active');
+        pill.setAttribute('aria-pressed','true');
+        current = pill.dataset.filter;
+        let visible=0;
+        cards.forEach(card=>{
+          const match = current==='all'||card.dataset.category===current;
+          if(match){
+            card.style.display='';
+            card.style.opacity='';
+            card.style.transform='';
+            visible++;
+          } else {
+            card.style.display='none';
+          }
+        });
+        if(counter) counter.textContent = `Showing ${visible} piece${visible!==1?'s':''}`;
+      });
+    });
+  })();
+  </script>
+</body>
+</html>

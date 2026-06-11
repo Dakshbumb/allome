@@ -1,0 +1,266 @@
+/* ============================================================
+   ALLOME — Responsive CSS
+   Mobile-first breakpoints, performance adaptations
+   ============================================================ */
+
+/* ─── 480px: Large phones ─── */
+@media (max-width: 480px) {
+  :root {
+    --section-pad: 64px;
+  }
+
+  .hero__content {
+    padding: 0 24px clamp(60px, 12vw, 100px);
+  }
+
+  .hero__title {
+    line-height: 0.95;
+  }
+
+  .philosophy {
+    height: auto;
+    padding: 40px 0;
+    gap: 16px;
+  }
+
+  .collections__header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .bespoke__left {
+    padding: 48px 24px 32px;
+  }
+
+  .bespoke__right {
+    padding: 0 24px 48px;
+  }
+
+  .step-card {
+    padding: 20px 20px;
+    gap: 14px;
+  }
+
+  .step-card__number {
+    font-size: 60px;
+    width: 48px;
+  }
+
+  .editorial__grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .editorial__item--tall {
+    grid-row: span 1;
+  }
+
+  .editorial__item--wide {
+    grid-column: span 1;
+  }
+
+  .identity__logo-wrap {
+    width: 100px;
+    height: 100px;
+  }
+
+  .venn__circles {
+    width: 200px;
+    height: 120px;
+  }
+
+  .venn__circle {
+    width: 80px;
+    height: 80px;
+  }
+
+  .venn__circle:nth-child(2) { left: 46px; }
+  .venn__circle:nth-child(3) { left: 92px; }
+
+  .testimonial__quote {
+    font-size: clamp(20px, 5vw, 28px);
+  }
+
+  .newsletter__title {
+    font-size: clamp(28px, 8vw, 48px);
+  }
+
+  .instagram__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .whatsapp-float {
+    bottom: 20px;
+    right: 16px;
+  }
+
+  .whatsapp-float__btn {
+    width: 46px;
+    height: 46px;
+  }
+}
+
+/* ─── 768px: Tablets ─── */
+@media (min-width: 481px) and (max-width: 768px) {
+  .philosophy {
+    height: auto;
+    padding: 36px 0;
+  }
+
+  .editorial__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .editorial__item--wide {
+    grid-column: span 2;
+  }
+
+  .identity__venn {
+    justify-content: center;
+  }
+}
+
+/* ─── 1023px: Small laptops ─── */
+@media (max-width: 1023px) {
+  /* Already handled in component files */
+
+  /* Disable parallax on mobile (performance) */
+  .hero__image {
+    transform: none !important;
+  }
+}
+
+/* ─── 1024px+ Desktop ─── */
+@media (min-width: 1024px) {
+  .collections__track {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scrollbar-width: thin;
+    scrollbar-color: var(--allome-mist) transparent;
+    padding-bottom: 20px;
+    gap: 24px;
+  }
+
+  .collections__track::-webkit-scrollbar {
+    height: 2px;
+  }
+
+  .collections__track::-webkit-scrollbar-thumb {
+    background: var(--allome-gold);
+    opacity: 0.3;
+  }
+}
+
+/* ─── 1440px: Wide desktop ─── */
+@media (min-width: 1440px) {
+  .hero__content {
+    padding-left: clamp(80px, 7vw, 120px);
+  }
+}
+
+/* ─── 2560px: Ultra-wide ─── */
+@media (min-width: 2000px) {
+  .hero__content {
+    max-width: 1600px;
+    margin: 0 auto;
+  }
+}
+
+/* ─── Touch: No custom cursor ─── */
+@media (hover: none) {
+  .cursor { display: none !important; }
+  body { cursor: auto; }
+  button { cursor: pointer; }
+  a { cursor: pointer; }
+}
+
+/* ─── High-resolution displays ─── */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .hero__image {
+    image-rendering: auto;
+  }
+}
+
+/* ─── Print styles ─── */
+@media print {
+  .nav, .cursor, .whatsapp-float, .page-loader, .grain-overlay,
+  .hero__scroll, .philosophy__marquee {
+    display: none !important;
+  }
+
+  body {
+    background: white;
+    color: black;
+  }
+}
+
+/* ─── Reduced motion: Override all transitions ─── */
+@media (prefers-reduced-motion: reduce) {
+  .philosophy__char {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .step-card {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .identity__svg path {
+    stroke-dashoffset: 0 !important;
+    transition: none !important;
+  }
+
+  .identity__wordmark-char {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+  }
+
+  .identity__venn {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  .hero__line-1, .hero__line-2, .hero__label {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+  }
+
+  .hero__rule {
+    opacity: 1 !important;
+  }
+
+  .hero__rule-line {
+    stroke-dashoffset: 0 !important;
+    transition: none !important;
+  }
+
+  #hero-cta, #hero-scroll {
+    opacity: 1 !important;
+  }
+
+  .grain-overlay {
+    animation: none !important;
+    display: none;
+  }
+
+  .whatsapp-float__btn {
+    animation: none !important;
+  }
+
+  .nav__whatsapp svg {
+    animation: none !important;
+  }
+
+  .philosophy__marquee-track {
+    animation: none !important;
+    /* Keep content visible */
+    transform: translateX(0) !important;
+  }
+}

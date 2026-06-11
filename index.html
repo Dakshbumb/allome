@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="description" content="Allome — Fine jewellery crafted for the stories you carry, the memories you cherish, and every version of yourself. Bespoke rings, necklaces, bracelets and gifts made in India." />
+  <meta property="og:title" content="Allome — For All of You." />
+  <meta property="og:description" content="Jewellery crafted for the stories you carry, the memories you cherish, and every version of yourself." />
+  <meta property="og:image" content="/assets/images/hero.jpg" />
+  <meta name="theme-color" content="#7A1C2E" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="Allome" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="format-detection" content="telephone=no" />
+  <title>Allome — For All of You.</title>
+
+  <!-- Preconnect Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=Jost:wght@300;400&display=swap" rel="stylesheet" />
+
+  <!-- GSAP CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+
+  <!-- Lenis Smooth Scroll -->
+  <script src="https://unpkg.com/lenis@1.1.14/dist/lenis.min.js" defer></script>
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/tokens.css" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/nav.css" />
+  <link rel="stylesheet" href="css/hero.css" />
+  <link rel="stylesheet" href="css/sections.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+  <link rel="stylesheet" href="css/mobile.css" />
+</head>
+<body class="page-loading">
+
+  <!-- Grain texture overlay -->
+  <div class="grain-overlay" aria-hidden="true"></div>
+
+  <!-- Page Loader -->
+  <div class="page-loader" id="page-loader" aria-hidden="true">
+    <div class="page-loader__logo">ALLOME</div>
+    <div class="page-loader__bar-track">
+      <div class="page-loader__bar"></div>
+    </div>
+  </div>
+
+  <!-- Custom Cursor -->
+  <div class="cursor" id="cursor" aria-hidden="true">
+    <div class="cursor__dot"></div>
+    <div class="cursor__ring"></div>
+    <div class="cursor__label">VIEW</div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       NAVIGATION
+  ═══════════════════════════════════════════ -->
+  <nav class="nav" id="nav" role="navigation" aria-label="Main navigation">
+    <div class="nav__inner">
+      <!-- Left Nav Links -->
+      <ul class="nav__links nav__links--left" role="list">
+        <li><a href="/" class="nav__link">Home</a></li>
+        <li><a href="/pages/collections" class="nav__link">Jewellery</a></li>
+        <li><a href="/pages/collections" class="nav__link">Collections</a></li>
+        <li><a href="#contact" class="nav__link">Contact</a></li>
+      </ul>
+
+      <!-- Logo (Centre) -->
+      <a href="/" class="nav__logo" aria-label="Allome Home">
+        <span class="nav__logo-text">ALLOME</span>
+      </a>
+
+      <!-- Right Actions -->
+      <div class="nav__actions">
+        <button class="nav__action-btn nav__lang" aria-label="Language">
+          <span class="nav__lang-text">Inter</span>
+          <svg width="10" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <button class="nav__action-btn nav__lang" aria-label="Currency">
+          <span class="nav__lang-text">Suisse</span>
+          <svg width="10" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <button class="nav__action-btn" aria-label="Search" id="search-btn">
+          <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </button>
+        <button class="nav__action-btn" aria-label="Cart (0 items)" id="cart-btn">
+          <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+        </button>
+
+        <!-- Hamburger (mobile only) -->
+        <button class="nav__hamburger" id="hamburger" aria-label="Menu" aria-expanded="false" aria-controls="nav-overlay">
+          <span class="nav__hamburger-bar"></span>
+          <span class="nav__hamburger-bar"></span>
+          <span class="nav__hamburger-bar"></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Nav Overlay -->
+  <div class="nav__overlay" id="nav-overlay" role="dialog" aria-modal="true" aria-label="Navigation menu">
+    <div class="nav__overlay-bg" aria-hidden="true"></div>
+    <ul class="nav__overlay-links" role="list">
+      <li><a href="/" class="nav__overlay-link" id="ol-home">Home</a></li>
+      <li><a href="/pages/collections" class="nav__overlay-link" id="ol-jewellery">Jewellery</a></li>
+      <li><a href="/pages/collections" class="nav__overlay-link" id="ol-collections">Collections</a></li>
+      <li><a href="/pages/bespoke" class="nav__overlay-link" id="ol-bespoke">Personalise</a></li>
+      <li><a href="/pages/story" class="nav__overlay-link" id="ol-story">Our Story</a></li>
+      <li><a href="#contact" class="nav__overlay-link" id="ol-contact">Contact</a></li>
+    </ul>
+    <p class="nav__overlay-footer">Finding the jewel in all of me · Made in India 🇮🇳</p>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════
+       HERO SECTION
+  ═══════════════════════════════════════════ -->
+  <section class="hero hero--editorial" id="hero" aria-label="Hero — For All of You">
+    <!-- Background media -->
+    <div class="hero__media" aria-hidden="true">
+      <img
+        src="assets/images/hero.jpg"
+        alt="Gold jewellery on warm skin — intimate and soulful"
+        class="hero__image"
+        id="hero-img"
+        loading="eager"
+        fetchpriority="high"
+      />
+    </div>
+
+    <!-- Vignette -->
+    <div class="hero__vignette hero__vignette--editorial" aria-hidden="true"></div>
+
+    <!-- Content -->
+    <div class="hero__content hero__content--editorial">
+      <h1 class="hero__title hero__title--editorial" id="hero-title">
+        <span class="hero__line-1 hero__line--editorial" id="hero-line-1">For All of You.</span>
+      </h1>
+      <p class="hero__subtitle" id="hero-subtitle">
+        Jewellery crafted for the stories you carry, the<br/>memories you cherish, and every version of yourself.
+      </p>
+      <div class="hero__ctas" id="hero-ctas">
+        <a href="#collections" class="hero__cta-btn hero__cta-btn--outline" id="hero-cta-1">
+          <span>Explore Collections</span>
+        </a>
+        <a href="/pages/bespoke" class="hero__cta-btn hero__cta-btn--filled" id="hero-cta-2">
+          <span>Personalise Yours</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="hero__scroll" id="hero-scroll" aria-label="Scroll to explore">
+      <div class="hero__scroll-line" aria-hidden="true">
+        <div class="hero__scroll-dot"></div>
+      </div>
+      <span class="hero__scroll-label">Scroll</span>
+    </div>
+
+    <!-- Side story labels (decorative) -->
+    <div class="hero__side-labels" aria-hidden="true">
+      <a href="#stories" class="hero__side-label">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M9 12l2 2 4-4"/></svg>
+        stories
+      </a>
+      <a href="#memories" class="hero__side-label">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+        memories
+      </a>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════
+       SIGNATURE COLLECTIONS
+  ═══════════════════════════════════════════ -->
+  <section class="sig-collections" id="collections" aria-label="Signature Collections">
+    <div class="sig-collections__header">
+      <h2 class="sig-collections__title reveal-up">Signature Collections</h2>
+      <div class="sig-collections__nav" aria-label="Scroll collections">
+        <button class="sig-collections__arrow sig-collections__arrow--prev" id="sig-prev" aria-label="Previous collection">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+        </button>
+        <button class="sig-collections__arrow sig-collections__arrow--next" id="sig-next" aria-label="Next collection">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Horizontal scroll track -->
+    <div class="sig-collections__scroll-wrapper">
+      <div class="sig-collections__track" id="sig-track">
+
+        <!-- Card 1: Amulet -->
+        <article class="sig-card" id="sig-amulet">
+          <div class="sig-card__image-wrap">
+            <img src="assets/images/collection-rings.jpg" alt="Amulet Collection — Talismans of Intention" class="sig-card__image" loading="lazy" />
+            <div class="sig-card__overlay">
+              <div class="sig-card__overlay-content">
+                <h3 class="sig-card__name">Amulet<br/>Collection</h3>
+                <p class="sig-card__tag">TALISMANS OF INTENTION</p>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 2: Constellation Pendants -->
+        <article class="sig-card" id="sig-constellation">
+          <div class="sig-card__image-wrap">
+            <img src="assets/images/collection-necklaces.jpg" alt="Constellation Pendants — Celestial Chronicles" class="sig-card__image" loading="lazy" />
+            <div class="sig-card__overlay">
+              <div class="sig-card__overlay-content">
+                <h3 class="sig-card__name">Constellation<br/>Pendants</h3>
+                <p class="sig-card__tag">CELESTIAL CHRONICLES</p>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 3: Sculptural Rings -->
+        <article class="sig-card" id="sig-sculptural">
+          <div class="sig-card__image-wrap">
+            <img src="assets/images/collection-bracelets.jpg" alt="Sculptural Rings — Fluid Expressions" class="sig-card__image" loading="lazy" />
+            <div class="sig-card__overlay">
+              <div class="sig-card__overlay-content">
+                <h3 class="sig-card__name">Sculptural<br/>Rings</h3>
+                <p class="sig-card__tag">FLUID EXPRESSIONS</p>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 4: Heritage Collection -->
+        <article class="sig-card" id="sig-heritage">
+          <div class="sig-card__image-wrap">
+            <img src="assets/images/collection-bespoke.jpg" alt="Heritage Collection — Cultural Resonance" class="sig-card__image" loading="lazy" />
+            <div class="sig-card__overlay">
+              <div class="sig-card__overlay-content">
+                <h3 class="sig-card__name">Heritage<br/>Collection</h3>
+                <p class="sig-card__tag">CULTURAL RESONANCE</p>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 5: Personalised Keepsakes -->
+        <article class="sig-card" id="sig-keepsakes">
+          <div class="sig-card__image-wrap">
+            <img src="assets/images/collection-gifts.jpg" alt="Personalised Keepsakes — Design Your Legacy" class="sig-card__image" loading="lazy" />
+            <div class="sig-card__overlay">
+              <div class="sig-card__overlay-content">
+                <h3 class="sig-card__name">Personalised<br/>Keepsakes</h3>
+                <p class="sig-card__tag">DESIGN YOUR LEGACY</p>
+              </div>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════
+       WHY ALLOME
+  ═══════════════════════════════════════════ -->
+  <section class="why-allome" id="why-allome" aria-label="Why ALLOME">
+    <div class="why-allome__inner">
+      <h2 class="why-allome__title reveal-up">Why ALLOME</h2>
+
+      <div class="why-allome__pillars">
+
+        <div class="why-pillar reveal-up" style="--delay:0.1s">
+          <div class="why-pillar__icon" aria-hidden="true">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M16 4 L28 10 L28 22 L16 28 L4 22 L4 10 Z"/>
+              <path d="M16 4 L16 28"/>
+              <path d="M4 10 L28 22"/>
+              <path d="M28 10 L4 22"/>
+            </svg>
+          </div>
+          <h3 class="why-pillar__name">Craft</h3>
+          <p class="why-pillar__desc">Unmatched artisans use centuries-old techniques to create singular, meaningful jewellery.</p>
+        </div>
+
+        <div class="why-pillar reveal-up" style="--delay:0.2s">
+          <div class="why-pillar__icon" aria-hidden="true">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="16" cy="12" r="6"/>
+              <path d="M6 26c0-5.523 4.477-10 10-10s10 4.477 10 10"/>
+              <path d="M22 4 C24 8 24 12 22 16"/>
+              <path d="M10 4 C8 8 8 12 10 16"/>
+            </svg>
+          </div>
+          <h3 class="why-pillar__name">Culture</h3>
+          <p class="why-pillar__desc">We weave stories, communities, craftsmanship and community dreams into the precious metals and stones of our art.</p>
+        </div>
+
+        <div class="why-pillar reveal-up" style="--delay:0.3s">
+          <div class="why-pillar__icon" aria-hidden="true">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="5"/>
+              <circle cx="21" cy="11" r="5"/>
+              <circle cx="16" cy="22" r="5"/>
+              <line x1="15" y1="14" x2="12.5" y2="17.5"/>
+              <line x1="17" y1="14" x2="19.5" y2="17.5"/>
+            </svg>
+          </div>
+          <h3 class="why-pillar__name">Community</h3>
+          <p class="why-pillar__desc">Allome builds a personalised community of connected wearers and artisans in the community.</p>
+        </div>
+
+      </div>
+
+      <!-- Carousel dots -->
+      <div class="why-allome__dots" role="tablist" aria-label="Why Allome navigation">
+        <button class="why-allome__dot is-active" aria-label="Craft" role="tab" aria-selected="true"></button>
+        <button class="why-allome__dot" aria-label="Culture" role="tab" aria-selected="false"></button>
+        <button class="why-allome__dot" aria-label="Community" role="tab" aria-selected="false"></button>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════
+       PERSONALISATION SHOWCASE
+  ═══════════════════════════════════════════ -->
+  <section class="personalise" id="personalise" aria-label="Personalisation Showcase">
+    <div class="personalise__inner">
+
+      <!-- Left: Text -->
+      <div class="personalise__left">
+        <h2 class="personalise__title reveal-up">Personalisation Showcase</h2>
+        <p class="personalise__body reveal-up">
+          Create meaningful pieces, make meaningful pieces a keepsake, and every version of yourself.
+        </p>
+        <p class="personalise__body reveal-up" style="margin-top:12px">
+          Customers start to complete you are more than a new face so you cards and serialise your customs.
+        </p>
+        <div class="personalise__options reveal-up">
+          <span class="personalise__option-tag">BESPOKE ENGRAVING</span>
+          <span class="personalise__option-sep">·</span>
+          <span class="personalise__option-tag">CURATED GEMSTONES</span>
+        </div>
+        <a href="/pages/bespoke" class="btn-outline reveal-up" id="personalise-cta" style="margin-top:32px">
+          <span>Personalise Yours</span>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+
+      <!-- Right: Product Image Grid -->
+      <div class="personalise__right">
+        <div class="personalise__grid">
+          <div class="personalise__img-wrap personalise__img-wrap--tall">
+            <img src="assets/images/bespoke-base-1.jpg" alt="Gold bangle — personalised" class="personalise__img" loading="lazy" />
+          </div>
+          <div class="personalise__img-wrap">
+            <img src="assets/images/bespoke-base-2.jpg" alt="Rings engraved with names" class="personalise__img" loading="lazy" />
+          </div>
+          <div class="personalise__img-wrap">
+            <img src="assets/images/bespoke-base-3.jpg" alt="Pendant with gemstone" class="personalise__img" loading="lazy" />
+          </div>
+          <div class="personalise__img-wrap personalise__img-wrap--wide">
+            <img src="assets/images/editorial-2.jpg" alt="Personalised jewellery detail" class="personalise__img" loading="lazy" />
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Full-width figure — woman portrait with jewellery line art overlay -->
+    <div class="personalise__figurine" aria-hidden="true">
+      <svg width="80" height="120" viewBox="0 0 80 120" fill="none" stroke="rgba(200,169,110,0.4)" stroke-width="1" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="40" cy="18" r="12"/>
+        <path d="M28 40 C20 50 18 70 22 90 L30 90 L32 68 L40 72 L48 68 L50 90 L58 90 C62 70 60 50 52 40 Z"/>
+        <path d="M22 50 L10 62"/>
+        <path d="M58 50 L70 62"/>
+        <circle cx="40" cy="32" r="2" fill="rgba(200,169,110,0.4)"/>
+      </svg>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════
+       LIFESTYLE GALLERY
+  ═══════════════════════════════════════════ -->
+  <section class="lifestyle" id="lifestyle" aria-label="Lifestyle Gallery">
+    <div class="lifestyle__header">
+      <h2 class="lifestyle__title reveal-up">Lifestyle Gallery</h2>
+    </div>
+
+    <div class="lifestyle__mosaic" id="lifestyle-mosaic">
+
+      <div class="lifestyle__item lifestyle__item--tall" id="life-1">
+        <img src="assets/images/editorial-1.jpg" alt="Woman wearing Allome gold jewellery" class="lifestyle__image" loading="lazy" />
+      </div>
+
+      <div class="lifestyle__item" id="life-2">
+        <img src="assets/images/collection-necklaces.jpg" alt="Allome gold necklace layered" class="lifestyle__image" loading="lazy" />
+      </div>
+
+      <div class="lifestyle__item" id="life-3">
+        <img src="assets/images/story-founder.jpg" alt="Founder wearing Allome jewellery" class="lifestyle__image" loading="lazy" />
+      </div>
+
+      <div class="lifestyle__item" id="life-4">
+        <img src="assets/images/collection-rings.jpg" alt="Gold rings collection" class="lifestyle__image" loading="lazy" />
+      </div>
+
+      <div class="lifestyle__item" id="life-5">
+        <img src="assets/images/bespoke-process.jpg" alt="Artisan crafting bespoke jewellery" class="lifestyle__image" loading="lazy" />
+      </div>
+
+      <div class="lifestyle__item" id="life-6">
+        <img src="assets/images/collection-bracelets.jpg" alt="Gold bracelets worn together" class="lifestyle__image" loading="lazy" />
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════
+       CUSTOMER STORIES
+  ═══════════════════════════════════════════ -->
+  <section class="stories" id="stories" aria-label="Customer Stories">
+    <div class="stories__inner">
+      <h2 class="stories__title reveal-up">Customer Stories</h2>
+
+      <div class="stories__layout">
+        <!-- Photo side -->
+        <div class="stories__photo-wrap">
+          <img src="assets/images/story-founder.jpg" alt="Customer wearing Allome" class="stories__photo" id="story-photo" loading="lazy" />
+          <div class="stories__photo-label" id="story-label">
+            <span class="stories__photo-name" id="story-photo-name">Simran Sethi</span>
+            <span class="stories__photo-source">ALLOME</span>
+          </div>
+        </div>
+
+        <!-- Quote side -->
+        <div class="stories__quote-wrap">
+
+          <div class="story-slide is-active" id="story-1">
+            <blockquote class="stories__quote">
+              "I ordered a bespoke necklace and it arrived more beautiful than I ever imagined. The engraving, the choice of stone — it's exactly me."
+            </blockquote>
+            <div class="stories__author">
+              <p class="stories__author-name">Simran Sethi</p>
+              <p class="stories__author-meta">ALLOME · Customer Story</p>
+            </div>
+          </div>
+
+          <div class="story-slide" id="story-2">
+            <blockquote class="stories__quote">
+              "Allome created something extraordinary from our brief. Exceptional craftsmanship and amazing packaging. I wear it every day."
+            </blockquote>
+            <div class="stories__author">
+              <p class="stories__author-name">Riya Khanna</p>
+              <p class="stories__author-meta">ALLOME · Customer Story</p>
+            </div>
+          </div>
+
+          <div class="story-slide" id="story-3">
+            <blockquote class="stories__quote">
+              "The WhatsApp consultation was so personal. They understood exactly what I wanted and the result is beyond beautiful."
+            </blockquote>
+            <div class="stories__author">
+              <p class="stories__author-name">Priya Mehta</p>
+              <p class="stories__author-meta">ALLOME · Customer Story</p>
+            </div>
+          </div>
+
+          <!-- Dots -->
+          <div class="stories__dots" role="tablist" aria-label="Customer story navigation">
+            <button class="stories__dot is-active" id="sdot-1" role="tab" aria-selected="true" aria-controls="story-1" aria-label="Story 1"></button>
+            <button class="stories__dot" id="sdot-2" role="tab" aria-selected="false" aria-controls="story-2" aria-label="Story 2"></button>
+            <button class="stories__dot" id="sdot-3" role="tab" aria-selected="false" aria-controls="story-3" aria-label="Story 3"></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════
+       LITTLE GIFTS — BIG FEELINGS
+  ═══════════════════════════════════════════ -->
+  <section class="gifts" id="gifts" aria-label="Little Gifts. Big Feelings.">
+    <div class="gifts__inner">
+      <div class="gifts__header">
+        <h2 class="gifts__title reveal-up">Little Gifts.<br/><em>Big Feelings.</em></h2>
+      </div>
+
+      <div class="gifts__grid">
+
+        <article class="gift-card reveal-up" id="gift-1" style="--delay:0.05s">
+          <div class="gift-card__img-wrap">
+            <img src="assets/images/collection-rings.jpg" alt="Promise collection — from ₹1,500" class="gift-card__img" loading="lazy" />
+          </div>
+          <div class="gift-card__body">
+            <p class="gift-card__name">Promise collection</p>
+            <p class="gift-card__price">₹1,500</p>
+          </div>
+        </article>
+
+        <article class="gift-card reveal-up" id="gift-2" style="--delay:0.1s">
+          <div class="gift-card__img-wrap">
+            <img src="assets/images/collection-necklaces.jpg" alt="Curated sentimental gifts — from ₹1,000" class="gift-card__img" loading="lazy" />
+          </div>
+          <div class="gift-card__body">
+            <p class="gift-card__name">Curated sentimental gifts</p>
+            <p class="gift-card__price">₹1,000</p>
+          </div>
+        </article>
+
+        <!-- Big crimson gift box image -->
+        <div class="gift-card gift-card--feature reveal-up" id="gift-feature" style="--delay:0.0s">
+          <div class="gift-card__img-wrap">
+            <img src="assets/images/collection-gifts.jpg" alt="Allome gift experience" class="gift-card__img" loading="lazy" />
+          </div>
+        </div>
+
+        <article class="gift-card reveal-up" id="gift-3" style="--delay:0.15s">
+          <div class="gift-card__img-wrap">
+            <img src="assets/images/bespoke-base-1.jpg" alt="Gift guide — from ₹1,100" class="gift-card__img" loading="lazy" />
+          </div>
+          <div class="gift-card__body">
+            <p class="gift-card__name">Gift guide</p>
+            <p class="gift-card__price">₹1,100</p>
+          </div>
+        </article>
+
+        <article class="gift-card reveal-up" id="gift-4" style="--delay:0.2s">
+          <div class="gift-card__img-wrap">
+            <img src="assets/images/bespoke-base-2.jpg" alt="Her boudoir — from ₹1,000" class="gift-card__img" loading="lazy" />
+          </div>
+          <div class="gift-card__body">
+            <p class="gift-card__name">Her boudoir</p>
+            <p class="gift-card__price">₹1,000</p>
+          </div>
+        </article>
+
+        <article class="gift-card reveal-up" id="gift-5" style="--delay:0.25s">
+          <div class="gift-card__img-wrap">
+            <img src="assets/images/bespoke-base-3.jpg" alt="Curated selection — from ₹1,100" class="gift-card__img" loading="lazy" />
+          </div>
+          <div class="gift-card__body">
+            <p class="gift-card__name">Curated selection</p>
+            <p class="gift-card__price">₹1,100</p>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════
+       NEWSLETTER — JOIN THE ALLOME STORY
+  ═══════════════════════════════════════════ -->
+  <section class="newsletter-allome" id="contact" aria-label="Join the ALLOME story">
+    <div class="newsletter-allome__inner">
+      <h2 class="newsletter-allome__title reveal-up">Become part of the ALLOME story.</h2>
+      <form class="newsletter-allome__form" id="newsletter-form" aria-label="Newsletter signup">
+        <label for="email-allome" class="sr-only">Your email address</label>
+        <input
+          type="email"
+          id="email-allome"
+          class="newsletter-allome__input"
+          placeholder="Email address"
+          required
+          autocomplete="email"
+        />
+        <button type="submit" class="newsletter-allome__btn" aria-label="Subscribe">
+          Subscribe
+        </button>
+      </form>
+      <!-- Decorative star -->
+      <div class="newsletter-allome__star" aria-hidden="true">✦</div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════
+       FOOTER
+  ═══════════════════════════════════════════ -->
+  <footer class="footer footer--allome" id="footer" role="contentinfo">
+    <div class="footer__grid footer__grid--4col">
+
+      <!-- Col 1: Brand -->
+      <div class="footer__brand">
+        <span class="footer__logo-text">ALLOME</span>
+        <div class="footer__socials">
+          <a href="https://instagram.com/allome.in" class="footer__social-link" target="_blank" rel="noopener" aria-label="Allome on Instagram">
+            <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Col 2: Navigation -->
+      <div class="footer__col">
+        <h3 class="footer__col-heading">Home</h3>
+        <nav aria-label="Footer navigation">
+          <ul class="footer__nav-links" role="list">
+            <li><a href="/" class="footer__nav-link">Home</a></li>
+            <li><a href="/pages/collections" class="footer__nav-link">Collections</a></li>
+            <li><a href="/pages/bespoke" class="footer__nav-link">Personalise</a></li>
+            <li><a href="/pages/story" class="footer__nav-link">Our Story</a></li>
+            <li><a href="/pages/journal" class="footer__nav-link">Journal</a></li>
+            <li><a href="#contact" class="footer__nav-link">Account</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <!-- Col 3: Newsletter -->
+      <div class="footer__col">
+        <h3 class="footer__col-heading">Newsletter Signup</h3>
+        <form class="footer__newsletter-form" aria-label="Footer newsletter">
+          <input type="email" placeholder="email address" class="footer__newsletter-input" autocomplete="email" />
+          <button type="submit" class="footer__newsletter-btn" aria-label="Sign up">Sign up</button>
+        </form>
+      </div>
+
+      <!-- Col 4: Social -->
+      <div class="footer__col">
+        <h3 class="footer__col-heading">Social</h3>
+        <ul class="footer__nav-links" role="list">
+          <li><a href="https://instagram.com/allome.in" class="footer__nav-link" target="_blank" rel="noopener">Instagram</a></li>
+          <li><a href="https://wa.me/919999999999" class="footer__nav-link" target="_blank" rel="noopener">WhatsApp</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="footer__bottom footer__bottom--allome">
+      <p class="footer__copyright">© 2025 Allome</p>
+      <nav class="footer__legal" aria-label="Legal links">
+        <a href="#" class="footer__legal-link">Mail</a>
+        <a href="#" class="footer__legal-link">Privacy</a>
+        <a href="#" class="footer__legal-link">Cookies</a>
+      </nav>
+      <p class="footer__credits">Made in India 🇮🇳</p>
+    </div>
+  </footer>
+
+
+  <!-- ═══════════════════════════════════════════
+       FLOATING WHATSAPP CTA
+  ═══════════════════════════════════════════ -->
+  <div class="whatsapp-float" id="wa-float" aria-label="Chat with Allome on WhatsApp">
+    <span class="whatsapp-float__tooltip">Chat with us</span>
+    <a
+      href="https://wa.me/919999999999?text=Hi%20Allome%2C%20I%27m%20interested%20in%20a%20bespoke%20piece"
+      class="whatsapp-float__btn"
+      target="_blank"
+      rel="noopener"
+      aria-label="Open WhatsApp chat with Allome"
+    >
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    </a>
+  </div>
+
+  <!-- JavaScript -->
+  <script src="js/main.js" defer></script>
+  <script src="js/hero.js" defer></script>
+  <script src="js/cursor.js" defer></script>
+  <script src="js/whatsapp.js" defer></script>
+
+  <script>
+  (function() {
+    'use strict';
+
+    // ── Signature Collections horizontal scroll ──
+    const track = document.getElementById('sig-track');
+    const prevBtn = document.getElementById('sig-prev');
+    const nextBtn = document.getElementById('sig-next');
+    if (track && prevBtn && nextBtn) {
+      const scrollAmount = () => track.querySelector('.sig-card')?.offsetWidth + 20 || 320;
+      prevBtn.addEventListener('click', () => track.scrollBy({ left: -scrollAmount(), behavior: 'smooth' }));
+      nextBtn.addEventListener('click', () => track.scrollBy({ left: scrollAmount(), behavior: 'smooth' }));
+    }
+
+    // ── Customer Stories carousel ──
+    const slides = document.querySelectorAll('.story-slide');
+    const sdots = document.querySelectorAll('.stories__dot');
+    const storyPhoto = document.getElementById('story-photo');
+    const storyPhotoName = document.getElementById('story-photo-name');
+    const storyPhotos = [
+      { src: 'assets/images/story-founder.jpg', name: 'Simran Sethi' },
+      { src: 'assets/images/editorial-1.jpg', name: 'Riya Khanna' },
+      { src: 'assets/images/story-atelier.jpg', name: 'Priya Mehta' }
+    ];
+    let storyIdx = 0;
+    function goToStory(idx) {
+      slides[storyIdx].classList.remove('is-active');
+      sdots[storyIdx].classList.remove('is-active');
+      sdots[storyIdx].setAttribute('aria-selected', 'false');
+      storyIdx = idx;
+      slides[storyIdx].classList.add('is-active');
+      sdots[storyIdx].classList.add('is-active');
+      sdots[storyIdx].setAttribute('aria-selected', 'true');
+      if (storyPhoto && storyPhotos[storyIdx]) {
+        storyPhoto.src = storyPhotos[storyIdx].src;
+        if (storyPhotoName) storyPhotoName.textContent = storyPhotos[storyIdx].name;
+      }
+    }
+    sdots.forEach((dot, i) => dot.addEventListener('click', () => goToStory(i)));
+    // Auto-advance every 5s
+    setInterval(() => goToStory((storyIdx + 1) % slides.length), 5000);
+
+    // ── Newsletter form ──
+    const form = document.getElementById('newsletter-form');
+    if (form) {
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const input = form.querySelector('input[type="email"]');
+        if (input) {
+          input.value = '';
+          input.placeholder = 'Thank you! ✦';
+        }
+      });
+    }
+  })();
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="theme-color" content="#7A1C2E" />
+  <meta name="description" content="Design your bespoke Allome jewellery piece — choose a base design, personalise with engravings and gemstones, and receive a piece made exactly for you." />
+  <title>Bespoke — Allome Fine Jewellery</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=Jost:wght@300;400&display=swap" rel="stylesheet" />
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+  <script src="https://unpkg.com/lenis@1.1.14/dist/lenis.min.js" defer></script>
+  <link rel="stylesheet" href="../css/tokens.css" />
+  <link rel="stylesheet" href="../css/base.css" />
+  <link rel="stylesheet" href="../css/nav.css" />
+  <link rel="stylesheet" href="../css/animations.css" />
+  <link rel="stylesheet" href="../css/inner-pages.css" />
+  <link rel="stylesheet" href="../css/mobile.css" />
+  <link rel="stylesheet" href="/pages/bespoke.css" />
+</head>
+<body>
+
+  <!-- Grain overlay -->
+  <div class="grain-overlay" aria-hidden="true"></div>
+
+  <!-- Custom Cursor -->
+  <div class="cursor" id="cursor" aria-hidden="true">
+    <div class="cursor__dot"></div>
+    <div class="cursor__ring"></div>
+    <div class="cursor__label">VIEW</div>
+  </div>
+
+  <nav class="nav nav--scrolled" id="nav" role="navigation" aria-label="Main navigation">
+    <div class="nav__inner">
+      <!-- Left Nav Links -->
+      <ul class="nav__links nav__links--left" role="list">
+        <li><a href="/" class="nav__link">Home</a></li>
+        <li><a href="/pages/collections" class="nav__link">Collections</a></li>
+        <li><a href="/pages/bespoke" class="nav__link" aria-current="page">Personalise</a></li>
+        <li><a href="/pages/story" class="nav__link">Our Story</a></li>
+      </ul>
+
+      <!-- Logo (Centre) -->
+      <a href="/" class="nav__logo" aria-label="Allome Home">
+        <span class="nav__logo-text">ALLOME</span>
+      </a>
+
+      <!-- Right Actions -->
+      <div class="nav__actions">
+        <button class="nav__action-btn" aria-label="Search" id="search-btn">
+          <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </button>
+        <button class="nav__action-btn" aria-label="Cart" id="cart-btn">
+          <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+        </button>
+        <button class="nav__hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">
+          <span class="nav__hamburger-bar"></span>
+          <span class="nav__hamburger-bar"></span>
+          <span class="nav__hamburger-bar"></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+  <div class="nav__overlay" id="nav-overlay" role="dialog" aria-modal="true">
+    <div class="nav__overlay-bg" aria-hidden="true"></div>
+    <ul class="nav__overlay-links" role="list">
+      <li><a href="/" class="nav__overlay-link">Home</a></li>
+      <li><a href="/pages/collections" class="nav__overlay-link">Collections</a></li>
+      <li><a href="/pages/bespoke" class="nav__overlay-link">Personalise</a></li>
+      <li><a href="/pages/story" class="nav__overlay-link">Our Story</a></li>
+      <li><a href="/pages/journal" class="nav__overlay-link">Journal</a></li>
+    </ul>
+    <p class="nav__overlay-footer">Finding the jewel in all of me · Made in India 🇮🇳</p>
+  </div>
+
+
+  <!-- ─── Page Hero ─── -->
+  <section class="bespoke-hero" aria-label="Begin your bespoke journey">
+    <div class="bespoke-hero__inner container">
+      <p class="eyebrow bespoke-hero__eyebrow">THE ALLOME CONFIGURATOR</p>
+      <h1 class="bespoke-hero__title">Make it<br/><em>entirely</em> yours.</h1>
+      <p class="bespoke-hero__subtitle">
+        Three steps. Infinite possibilities. One piece, made only for you.
+      </p>
+    </div>
+  </section>
+
+
+  <!-- ─── Progress Indicator ─── -->
+  <div class="bespoke-progress" id="bespoke-progress" role="progressbar" aria-valuemin="1" aria-valuemax="3" aria-valuenow="1" aria-label="Configurator progress">
+    <div class="container">
+      <div class="bespoke-progress__inner">
+        <div class="bespoke-progress__step is-active" id="progress-1">
+          <div class="bespoke-progress__num">01</div>
+          <div class="bespoke-progress__label">Choose Design</div>
+        </div>
+        <div class="bespoke-progress__line" id="progress-line-1"></div>
+        <div class="bespoke-progress__step" id="progress-2">
+          <div class="bespoke-progress__num">02</div>
+          <div class="bespoke-progress__label">Personalise</div>
+        </div>
+        <div class="bespoke-progress__line" id="progress-line-2"></div>
+        <div class="bespoke-progress__step" id="progress-3">
+          <div class="bespoke-progress__num">03</div>
+          <div class="bespoke-progress__label">Your Preview</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ─── CONFIGURATOR STEPS ─── -->
+  <main class="bespoke-configurator" id="configurator">
+
+    <!-- ═══ STEP 1: Choose Base Design ═══ -->
+    <section class="config-step is-active" id="step-choose" aria-label="Step 1: Choose your base design">
+      <div class="container">
+        <div class="config-step__header">
+          <span class="config-step__number">01</span>
+          <div>
+            <h2 class="config-step__title">Choose a base design.</h2>
+            <p class="config-step__subtitle">The canvas for your story. Select one to begin.</p>
+          </div>
+        </div>
+
+        <div class="design-grid" id="design-grid" role="radiogroup" aria-label="Choose a jewellery design">
+
+          <label class="design-card" id="design-ring" for="radio-ring">
+            <input type="radio" id="radio-ring" name="base-design" value="ring" class="design-card__radio" />
+            <div class="design-card__image-wrap">
+              <img src="../assets/images/bespoke-base-1.jpg" alt="Gold solitaire ring" class="design-card__image" loading="lazy" />
+              <div class="design-card__check" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+            </div>
+            <div class="design-card__body">
+              <h3 class="design-card__title">The Solitaire Ring</h3>
+              <p class="design-card__price">Starting from ₹4,800</p>
+            </div>
+          </label>
+
+          <label class="design-card" id="design-necklace" for="radio-necklace">
+            <input type="radio" id="radio-necklace" name="base-design" value="necklace" class="design-card__radio" />
+            <div class="design-card__image-wrap">
+              <img src="../assets/images/bespoke-base-2.jpg" alt="Gold pendant necklace" class="design-card__image" loading="lazy" />
+              <div class="design-card__check" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+            </div>
+            <div class="design-card__body">
+              <h3 class="design-card__title">The Pendant Necklace</h3>
+              <p class="design-card__price">Starting from ₹3,600</p>
+            </div>
+          </label>
+
+          <label class="design-card" id="design-bracelet" for="radio-bracelet">
+            <input type="radio" id="radio-bracelet" name="base-design" value="bracelet" class="design-card__radio" />
+            <div class="design-card__image-wrap">
+              <img src="../assets/images/bespoke-base-3.jpg" alt="Gold bangle bracelet" class="design-card__image" loading="lazy" />
+              <div class="design-card__check" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+            </div>
+            <div class="design-card__body">
+              <h3 class="design-card__title">The Gold Bangle</h3>
+              <p class="design-card__price">Starting from ₹5,200</p>
+            </div>
+          </label>
+
+        </div>
+
+        <div class="config-step__footer">
+          <button class="btn-primary" id="btn-step-1" disabled aria-label="Continue to personalisation">
+            <span>Continue</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </button>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ═══ STEP 2: Personalise ═══ -->
+    <section class="config-step" id="step-personalise" aria-label="Step 2: Personalise your piece" hidden>
+      <div class="container">
+        <div class="config-step__header">
+          <span class="config-step__number">02</span>
+          <div>
+            <h2 class="config-step__title">Add your details.</h2>
+            <p class="config-step__subtitle">Every choice makes it yours. Take your time.</p>
+          </div>
+        </div>
+
+        <div class="personalise-grid">
+
+          <!-- Left: Form fields -->
+          <div class="personalise-form">
+
+            <!-- Metal type -->
+            <fieldset class="form-group" id="fg-metal">
+              <legend class="form-group__label">Metal Finish</legend>
+              <div class="metal-options" role="radiogroup">
+                <label class="metal-option" for="metal-yg">
+                  <input type="radio" id="metal-yg" name="metal" value="yellow-gold" checked />
+                  <div class="metal-swatch metal-swatch--yg" aria-label="Yellow Gold"></div>
+                  <span>Yellow Gold</span>
+                </label>
+                <label class="metal-option" for="metal-rg">
+                  <input type="radio" id="metal-rg" name="metal" value="rose-gold" />
+                  <div class="metal-swatch metal-swatch--rg" aria-label="Rose Gold"></div>
+                  <span>Rose Gold</span>
+                </label>
+                <label class="metal-option" for="metal-sg">
+                  <input type="radio" id="metal-sg" name="metal" value="silver" />
+                  <div class="metal-swatch metal-swatch--sg" aria-label="Sterling Silver"></div>
+                  <span>Sterling Silver</span>
+                </label>
+              </div>
+            </fieldset>
+
+            <!-- Gemstone -->
+            <fieldset class="form-group" id="fg-gem">
+              <legend class="form-group__label">Gemstone</legend>
+              <div class="gem-options" role="radiogroup">
+                <label class="gem-option" for="gem-none">
+                  <input type="radio" id="gem-none" name="gemstone" value="none" checked />
+                  <div class="gem-swatch" style="background: var(--allome-mist);" aria-label="No Stone"></div>
+                  <span>None</span>
+                </label>
+                <label class="gem-option" for="gem-diamond">
+                  <input type="radio" id="gem-diamond" name="gemstone" value="diamond" />
+                  <div class="gem-swatch" style="background: linear-gradient(135deg, #f0f4f8, #ccd9e8, #f0f4f8);" aria-label="Diamond"></div>
+                  <span>Diamond</span>
+                </label>
+                <label class="gem-option" for="gem-ruby">
+                  <input type="radio" id="gem-ruby" name="gemstone" value="ruby" />
+                  <div class="gem-swatch" style="background: #9B1A2E;" aria-label="Ruby"></div>
+                  <span>Ruby</span>
+                </label>
+                <label class="gem-option" for="gem-emerald">
+                  <input type="radio" id="gem-emerald" name="gemstone" value="emerald" />
+                  <div class="gem-swatch" style="background: #1D6B4A;" aria-label="Emerald"></div>
+                  <span>Emerald</span>
+                </label>
+                <label class="gem-option" for="gem-sapphire">
+                  <input type="radio" id="gem-sapphire" name="gemstone" value="sapphire" />
+                  <div class="gem-swatch" style="background: #1A3B7A;" aria-label="Sapphire"></div>
+                  <span>Sapphire</span>
+                </label>
+              </div>
+            </fieldset>
+
+            <!-- Engraving -->
+            <div class="form-group" id="fg-engraving">
+              <label for="engraving-input" class="form-group__label">
+                Engraving
+                <span class="form-group__hint">Up to 20 characters</span>
+              </label>
+              <div class="engraving-field">
+                <input
+                  type="text"
+                  id="engraving-input"
+                  class="form-input"
+                  maxlength="20"
+                  placeholder="A name, a date, a word that matters…"
+                  autocomplete="off"
+                  aria-describedby="engraving-counter"
+                />
+                <span class="engraving-counter" id="engraving-counter" aria-live="polite">0 / 20</span>
+              </div>
+            </div>
+
+            <!-- Size -->
+            <div class="form-group" id="fg-size">
+              <label for="size-select" class="form-group__label">Size / Length</label>
+              <div class="select-wrap">
+                <select id="size-select" class="form-select" aria-label="Select size or length">
+                  <option value="">Select…</option>
+                  <option value="xs">Ring Size 6 (XS)</option>
+                  <option value="s">Ring Size 7 (S)</option>
+                  <option value="m">Ring Size 8 (M)</option>
+                  <option value="l">Ring Size 9 (L)</option>
+                  <option value="xl">Ring Size 10 (XL)</option>
+                  <option value="custom">Custom size — we'll ask!</option>
+                </select>
+                <svg class="select-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+              </div>
+            </div>
+
+            <!-- Occasion -->
+            <div class="form-group" id="fg-occasion">
+              <label for="occasion-select" class="form-group__label">Occasion</label>
+              <div class="select-wrap">
+                <select id="occasion-select" class="form-select" aria-label="Select occasion">
+                  <option value="">Select…</option>
+                  <option value="self">For Myself</option>
+                  <option value="birthday">Birthday Gift</option>
+                  <option value="anniversary">Anniversary</option>
+                  <option value="wedding">Wedding</option>
+                  <option value="graduation">Graduation</option>
+                  <option value="other">Other</option>
+                </select>
+                <svg class="select-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+              </div>
+            </div>
+
+            <!-- Special notes -->
+            <div class="form-group" id="fg-notes">
+              <label for="notes-input" class="form-group__label">
+                Any special notes?
+                <span class="form-group__hint">Optional</span>
+              </label>
+              <textarea
+                id="notes-input"
+                class="form-textarea"
+                rows="3"
+                placeholder="Tell us anything we should know about this piece…"
+                maxlength="300"
+              ></textarea>
+            </div>
+
+          </div>
+
+          <!-- Right: Live preview -->
+          <div class="personalise-preview" id="personalise-preview" aria-live="polite" aria-label="Live preview of your customisation">
+            <div class="preview-card">
+              <div class="preview-card__badge">
+                <span class="preview-card__badge-label">Your Allome Piece</span>
+              </div>
+              <div class="preview-card__design-name" id="preview-design">Ring</div>
+              <div class="preview-card__specs">
+                <div class="preview-spec" id="preview-metal">
+                  <span class="preview-spec__key">Metal</span>
+                  <span class="preview-spec__val" id="spec-metal">Yellow Gold</span>
+                </div>
+                <div class="preview-spec" id="preview-gem">
+                  <span class="preview-spec__key">Gemstone</span>
+                  <span class="preview-spec__val" id="spec-gem">None</span>
+                </div>
+                <div class="preview-spec" id="preview-engraving">
+                  <span class="preview-spec__key">Engraving</span>
+                  <span class="preview-spec__val preview-spec__val--engraving" id="spec-engraving">—</span>
+                </div>
+                <div class="preview-spec">
+                  <span class="preview-spec__key">Size</span>
+                  <span class="preview-spec__val" id="spec-size">Not selected</span>
+                </div>
+              </div>
+              <div class="preview-card__tagline">
+                Made only for you.<br/>
+                Crafted in India.
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="config-step__footer">
+          <button class="btn-ghost" id="btn-back-1" aria-label="Go back to design selection">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+            <span>Back</span>
+          </button>
+          <button class="btn-primary" id="btn-step-2" aria-label="Continue to preview">
+            <span>See Your Preview</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </button>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ═══ STEP 3: Preview & Send ═══ -->
+    <section class="config-step" id="step-preview" aria-label="Step 3: Your bespoke preview" hidden>
+      <div class="container">
+        <div class="config-step__header">
+          <span class="config-step__number">03</span>
+          <div>
+            <h2 class="config-step__title">Your piece is ready.</h2>
+            <p class="config-step__subtitle">Send this to Allome and our artisans will be in touch.</p>
+          </div>
+        </div>
+
+        <div class="final-preview">
+          <div class="final-preview__card" id="final-preview-card">
+            <div class="final-preview__header">
+              <div class="final-preview__logo">
+                <img src="../assets/images/logo.png" alt="Allome" width="32" height="32" />
+                <span>Allome Bespoke Order</span>
+              </div>
+            </div>
+            <div class="final-preview__divider"></div>
+            <div class="final-preview__specs" id="final-specs">
+              <!-- Dynamically populated -->
+            </div>
+            <div class="final-preview__divider"></div>
+            <p class="final-preview__note">
+              "Every piece is unique. Our artisans will craft this exactly to your specifications."
+            </p>
+          </div>
+
+          <div class="final-preview__cta">
+            <a
+              href="#"
+              class="btn-wa"
+              id="send-wa"
+              target="_blank"
+              rel="noopener"
+              aria-label="Send your bespoke order via WhatsApp"
+            >
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              Start the Conversation
+            </a>
+            <p class="final-preview__cta-note">
+              Opens WhatsApp with your order details pre-filled. Our team responds within 24 hours.
+            </p>
+            <button class="btn-ghost" id="btn-back-2" aria-label="Go back to personalise">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+              <span>Edit details</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- Footer -->
+  <footer class="mini-footer" role="contentinfo">
+    <a href="/" class="mini-footer__logo">ALLOME</a>
+    <nav class="mini-footer__links" aria-label="Footer links">
+      <a href="/pages/collections" class="mini-footer__link">Collections</a>
+      <a href="/pages/bespoke" class="mini-footer__link">Personalise</a>
+      <a href="/pages/story" class="mini-footer__link">Our Story</a>
+      <a href="/pages/journal" class="mini-footer__link">Journal</a>
+    </nav>
+    <p class="mini-footer__copy">© 2025 Allome · Made in India 🇮🇳</p>
+  </footer>
+
+  <!-- WhatsApp Float -->
+  <div class="whatsapp-float is-visible" id="wa-float" aria-label="Chat on WhatsApp">
+    <span class="whatsapp-float__tooltip">Chat with us</span>
+    <a href="https://wa.me/919999999999?text=Hi%20Allome%2C%20I%27d%20like%20to%20create%20a%20bespoke%20piece" class="whatsapp-float__btn" target="_blank" rel="noopener" aria-label="WhatsApp">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    </a>
+  </div>
+
+  <script src="../js/cursor.js" defer></script>
+  <script src="/pages/bespoke.js" defer></script>
+</body>
+</html>

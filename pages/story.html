@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="description" content="The Allome story — fine jewellery born from a love of craft, culture, and community. Made in India, made for you." />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="theme-color" content="#7A1C2E" />
+  <title>Our Story — Allome Fine Jewellery</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=Jost:wght@300;400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/tokens.css" />
+  <link rel="stylesheet" href="../css/base.css" />
+  <link rel="stylesheet" href="../css/nav.css" />
+  <link rel="stylesheet" href="../css/animations.css" />
+  <link rel="stylesheet" href="../css/inner-pages.css" />
+  <link rel="stylesheet" href="../css/mobile.css" />
+  <link rel="stylesheet" href="/pages/story.css" />
+</head>
+<body>
+  <div class="grain-overlay" aria-hidden="true"></div>
+  <div class="cursor" id="cursor" aria-hidden="true">
+    <div class="cursor__dot"></div>
+    <div class="cursor__ring"></div>
+    <div class="cursor__label">VIEW</div>
+  </div>
+
+  <nav class="nav nav--scrolled" id="nav" role="navigation" aria-label="Main navigation">
+    <div class="nav__inner">
+      <!-- Left Nav Links -->
+      <ul class="nav__links nav__links--left" role="list">
+        <li><a href="/" class="nav__link">Home</a></li>
+        <li><a href="/pages/collections" class="nav__link">Collections</a></li>
+        <li><a href="/pages/bespoke" class="nav__link">Personalise</a></li>
+        <li><a href="/pages/story" class="nav__link" aria-current="page">Our Story</a></li>
+      </ul>
+
+      <!-- Logo (Centre) -->
+      <a href="/" class="nav__logo" aria-label="Allome Home">
+        <span class="nav__logo-text">ALLOME</span>
+      </a>
+
+      <!-- Right Actions -->
+      <div class="nav__actions">
+        <button class="nav__action-btn" aria-label="Search" id="search-btn">
+          <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </button>
+        <button class="nav__action-btn" aria-label="Cart" id="cart-btn">
+          <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+        </button>
+        <button class="nav__hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">
+          <span class="nav__hamburger-bar"></span>
+          <span class="nav__hamburger-bar"></span>
+          <span class="nav__hamburger-bar"></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+  <div class="nav__overlay" id="nav-overlay" role="dialog" aria-modal="true">
+    <div class="nav__overlay-bg" aria-hidden="true"></div>
+    <ul class="nav__overlay-links" role="list">
+      <li><a href="/" class="nav__overlay-link">Home</a></li>
+      <li><a href="/pages/collections" class="nav__overlay-link">Collections</a></li>
+      <li><a href="/pages/bespoke" class="nav__overlay-link">Personalise</a></li>
+      <li><a href="/pages/story" class="nav__overlay-link">Our Story</a></li>
+      <li><a href="/pages/journal" class="nav__overlay-link">Journal</a></li>
+    </ul>
+    <p class="nav__overlay-footer">Finding the jewel in all of me · Made in India 🇮🇳</p>
+  </div>
+
+  <div class="inner-page">
+
+    <header class="page-header page-header--tall">
+      <div class="page-header__media">
+        <img src="../assets/images/story-atelier.jpg" alt="The Allome atelier" class="page-header__img" loading="eager" fetchpriority="high" />
+      </div>
+      <div class="page-header__vignette" aria-hidden="true"></div>
+      <div class="page-header__content">
+        <span class="page-header__eyebrow eyebrow">OUR STORY</span>
+        <h1 class="page-header__title">More than jewellery.<br/><em>A quiet revolution.</em></h1>
+      </div>
+    </header>
+
+    <!-- Origin Story -->
+    <section class="section section--white" aria-label="How it began">
+      <div class="content-grid">
+        <div class="content-grid__text reveal-up">
+          <span class="text-eyebrow">HOW IT BEGAN</span>
+          <div class="section-rule"></div>
+          <h2 class="text-headline">Born from a question<br/>nobody was asking.</h2>
+          <p class="text-body-lg">Allome began with a simple frustration: why was it so hard to find jewellery that felt truly personal? Not in the generic way of a name necklace from a fast fashion brand — but deeply, specifically yours.</p>
+          <p class="text-body-lg">We wanted pieces rooted in centuries of Indian goldsmithing tradition, yet stripped of excess. Minimal but meaningful. Jewellery that carried memory, not just metal.</p>
+          <p class="text-body-lg">So in 2023, we started Allome. Every piece begins with a conversation. Every design is a canvas waiting for your story.</p>
+        </div>
+        <div class="content-grid__visual">
+          <img src="../assets/images/story-founder.jpg" alt="Allome founder at the workbench" class="content-grid__img" loading="lazy" />
+        </div>
+      </div>
+    </section>
+
+    <!-- Values -->
+    <section class="section section--cream" aria-label="What we believe">
+      <div class="container">
+        <div class="story-values__header reveal-up">
+          <span class="text-eyebrow">WHAT WE BELIEVE</span>
+          <h2 class="text-headline">Three ideas.<br/>Every piece.</h2>
+        </div>
+        <div class="values-grid">
+          <article class="value-card reveal-up" style="--delay:0s">
+            <div class="value-card__number">01</div>
+            <h3 class="value-card__title">Craft First</h3>
+            <p class="value-card__body">Every piece is made by hand, with purpose. We work with skilled artisans who've spent years learning their form — because no machine can replicate care.</p>
+          </article>
+          <article class="value-card reveal-up" style="--delay:0.15s">
+            <div class="value-card__number">02</div>
+            <h3 class="value-card__title">Yours Alone</h3>
+            <p class="value-card__body">Jewellery should be personal. Not mass-produced. Not generic. Every Allome piece begins with a conversation — and ends with something no one else in the world has.</p>
+          </article>
+          <article class="value-card reveal-up" style="--delay:0.3s">
+            <div class="value-card__number">03</div>
+            <h3 class="value-card__title">Rooted in India</h3>
+            <p class="value-card__body">Our craft tradition is centuries old. We honour it — its precision, its patience, its poetry — while making it feel entirely today. Indian craft for the modern self.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pull Quote -->
+    <section class="story-quote" aria-label="Brand philosophy">
+      <div class="story-quote__bg">
+        <img src="../assets/images/bespoke-process.jpg" alt="" class="story-quote__img" loading="lazy" aria-hidden="true" />
+      </div>
+      <div class="story-quote__overlay" aria-hidden="true"></div>
+      <div class="story-quote__content reveal-up">
+        <blockquote class="story-quote__text">"We make pieces that feel like they were always meant for you. Because they were."</blockquote>
+        <p class="story-quote__attr">— Allome, est. 2023</p>
+      </div>
+    </section>
+
+    <!-- Community + Stats -->
+    <section class="section section--blush" aria-label="The Allome community">
+      <div class="container">
+        <div class="reveal-up">
+          <span class="text-eyebrow">THE ALLOME COMMUNITY</span>
+          <h2 class="text-headline">Made for you.<br/>Made with you.</h2>
+          <p class="text-body-lg" style="max-width:560px">Allome grows through the people who wear it. Every customer shapes what we make next — their feedback, their stories, their wishes become new designs. You're not just a customer. You're the reason the piece exists.</p>
+        </div>
+        <div class="stats-row">
+          <div class="stat-item reveal-up" style="--delay:0s">
+            <div class="stat-item__num-wrap">
+              <span class="stat-item__number" data-target="500">0</span><span class="stat-item__plus">+</span>
+            </div>
+            <p class="stat-item__label">Bespoke Pieces Made</p>
+          </div>
+          <div class="stat-item reveal-up" style="--delay:0.15s">
+            <div class="stat-item__num-wrap">
+              <span class="stat-item__number" data-target="12">0</span>
+            </div>
+            <p class="stat-item__label">Artisan Partners</p>
+          </div>
+          <div class="stat-item reveal-up" style="--delay:0.3s">
+            <div class="stat-item__num-wrap">
+              <span class="stat-item__number" data-target="6">0</span>
+            </div>
+            <p class="stat-item__label">Cities, One Community</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Process -->
+    <section class="section section--white" aria-label="Our process">
+      <div class="container">
+        <div class="reveal-up">
+          <span class="text-eyebrow">THE PROCESS</span>
+          <h2 class="text-headline">Every piece<br/>earns its place.</h2>
+        </div>
+        <div class="process-timeline">
+          <div class="process-step reveal-up" style="--delay:0s">
+            <div class="process-step__icon">01</div>
+            <h3 class="process-step__title">Design</h3>
+            <p class="process-step__desc">We sketch, refine, and listen. Your vision guides every decision from the very first message.</p>
+          </div>
+          <div class="process-step__line reveal-up" style="--delay:0.1s" aria-hidden="true"></div>
+          <div class="process-step reveal-up" style="--delay:0.15s">
+            <div class="process-step__icon">02</div>
+            <h3 class="process-step__title">Craft</h3>
+            <p class="process-step__desc">Our artisans work by hand, with precision. 12–14 days of focused, passionate making.</p>
+          </div>
+          <div class="process-step__line reveal-up" style="--delay:0.25s" aria-hidden="true"></div>
+          <div class="process-step reveal-up" style="--delay:0.3s">
+            <div class="process-step__icon">03</div>
+            <h3 class="process-step__title">Yours</h3>
+            <p class="process-step__desc">Packaged with care. Delivered with meaning. Worn with love — for a lifetime.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Band -->
+    <section class="inner-footer-cta">
+      <span class="text-eyebrow" style="color:var(--allome-gold);display:block;margin-bottom:16px">BEGIN HERE</span>
+      <h2 class="inner-footer-cta__title">Ready to find<br/>your jewel?</h2>
+      <p class="inner-footer-cta__subtitle">Start with a conversation. End with a keepsake.</p>
+      <div class="cta-pair">
+      <a href="/collections" class="cta-btn cta-btn--outline">Explore Collections</a>
+        <a href="/bespoke" class="cta-btn cta-btn--filled">Start Bespoke</a>
+      </div>
+    </section>
+
+    <footer class="mini-footer" role="contentinfo">
+      <a href="/" class="mini-footer__logo">ALLOME</a>
+      <nav class="mini-footer__links" aria-label="Footer links">
+        <a href="/pages/collections" class="mini-footer__link">Collections</a>
+        <a href="/pages/bespoke" class="mini-footer__link">Personalise</a>
+        <a href="/pages/story" class="mini-footer__link">Our Story</a>
+        <a href="/pages/journal" class="mini-footer__link">Journal</a>
+      </nav>
+      <p class="mini-footer__copy">© 2025 Allome · Made in India 🇮🇳</p>
+    </footer>
+  </div>
+
+  <div class="whatsapp-float is-visible" id="wa-float">
+    <span class="whatsapp-float__tooltip">Chat with us</span>
+    <a href="https://wa.me/919999999999?text=Hi%20Allome%2C%20I%27d%20like%20to%20know%20more" class="whatsapp-float__btn" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    </a>
+  </div>
+
+  <script src="../js/cursor.js" defer></script>
+  <script>
+  (function(){
+    'use strict';
+    const prefRM = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const hamburger = document.getElementById('hamburger');
+    const overlay = document.getElementById('nav-overlay');
+    if(hamburger && overlay){
+      hamburger.addEventListener('click',()=>{
+        const open = overlay.classList.toggle('is-open');
+        hamburger.classList.toggle('is-open',open);
+        hamburger.setAttribute('aria-expanded',open);
+        document.body.style.overflow = open?'hidden':'';
+      });
+      overlay.querySelectorAll('.nav__overlay-link').forEach(l=>l.addEventListener('click',()=>{
+        overlay.classList.remove('is-open');
+        hamburger.classList.remove('is-open');
+        hamburger.setAttribute('aria-expanded','false');
+        document.body.style.overflow='';
+      }));
+    }
+    // Reveal
+    const revealObs = new IntersectionObserver(entries=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){
+          const d = parseFloat(e.target.style.getPropertyValue('--delay'))||0;
+          if(prefRM) e.target.classList.add('is-visible');
+          else setTimeout(()=>e.target.classList.add('is-visible'),d*1000);
+          revealObs.unobserve(e.target);
+        }
+      });
+    },{threshold:0.08,rootMargin:'0px 0px -40px 0px'});
+    document.querySelectorAll('.reveal-up').forEach(el=>revealObs.observe(el));
+    // Stats counter
+    const statObs = new IntersectionObserver(entries=>{
+      entries.forEach(e=>{
+        if(!e.isIntersecting) return;
+        const numEl = e.target.querySelector('.stat-item__number');
+        if(!numEl) return;
+        const target = parseInt(numEl.dataset.target);
+        if(prefRM){numEl.textContent=target;return;}
+        const dur = 1400;
+        const start = performance.now();
+        (function tick(now){
+          const t = Math.min((now-start)/dur,1);
+          numEl.textContent = Math.round(t*target);
+          if(t<1) requestAnimationFrame(tick);
+        })(performance.now());
+        statObs.unobserve(e.target);
+      });
+    },{threshold:0.5});
+    document.querySelectorAll('.stat-item').forEach(el=>statObs.observe(el));
+  })();
+  </script>
+</body>
+</html>
